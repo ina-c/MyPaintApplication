@@ -104,7 +104,7 @@ public partial class PaintApp : Form
 
 
         MenuFileOpen = new ToolStripMenuItem("Open image");
-        MenuFileOpen.Click += uploadBtn_Click;
+        MenuFileOpen.Click += UploadBtn_Click;
         MenuFileOpen.ShortcutKeys = Keys.Control | Keys.U;
 
         MenuFileSave = new ToolStripMenuItem("Save");
@@ -164,7 +164,7 @@ public partial class PaintApp : Form
 
 
         ContextMenuFileOpen = new ToolStripMenuItem("Open image");
-        ContextMenuFileOpen.Click += uploadBtn_Click;
+        ContextMenuFileOpen.Click += UploadBtn_Click;
         ContextMenuFileOpen.ShortcutKeys = Keys.Control | Keys.U;
         ContextMenuFileOpen.ShowShortcutKeys = true;
 
@@ -577,39 +577,50 @@ public partial class PaintApp : Form
         currentColor.ForeColor = color;
     }
 
-    private void SaveBtn_Click(object sender, EventArgs e)
+    private void SaveBtn_Click(object? sender, EventArgs e)
     {
-        var sfd = new SaveFileDialog();
-        sfd.Filter = "JPEG|*.jpg";
-        if (sfd.ShowDialog() == DialogResult.OK)
+        if (sender is not null)
         {
-            var bitmap = bmp.Clone(new Rect(0, 0, Board.Width, Board.Height),
-                bmp.PixelFormat);
-            bmp.Save(sfd.FileName, ImageFormat.Jpeg);
-            MessageBox.Show("Image Saved Successfully");
+            var sfd = new SaveFileDialog();
+            sfd.Filter = "JPEG|*.jpg";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                var bitmap = bmp.Clone(new Rect(0, 0, Board.Width, Board.Height),
+                    bmp.PixelFormat);
+                bmp.Save(sfd.FileName, ImageFormat.Jpeg);
+                MessageBox.Show("Image Saved Successfully");
+            }
         }
     }
 
-    private void ResetBtn_Click(object sender, EventArgs e)
+    private void ResetBtn_Click(object? sender, EventArgs e)
     {
-        g.Clear(Color.White);
-        Board.Image = bmp;
+        if (sender is not null)
+        {
+            g.Clear(Color.White);
+            Board.Image = bmp;
+        }
     }
 
 
-    private void PaintApp_Leave(object sender, EventArgs e)
+    private void PaintApp_Leave(object? sender, EventArgs e)
     {
-        if (undoStack.Count == 0) return;
+        if (sender is not null)
+        {
+            if (undoStack.Count == 0) return;
 
-        var msg = "Do you want to save before closing?";
-        var result = MessageBox.Show(msg, "Close Confirmation",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var msg = "Do you want to save before closing?";
+            var result = MessageBox.Show(msg, "Close Confirmation",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-        if (result == DialogResult.Yes) SaveBtn_Click(sender, e);
+            if (result == DialogResult.Yes) SaveBtn_Click(sender, e);
 
-        var cancelEvent = e as CancelEventArgs;
-
-        cancelEvent.Cancel = false;
+            var cancelEvent = e as CancelEventArgs;
+            if (cancelEvent is not null)
+            {
+                cancelEvent.Cancel = false;
+            }
+        }
     }
 
     private void DroppperBtn_Click(object sender, EventArgs e)
@@ -644,9 +655,9 @@ public partial class PaintApp : Form
         SetTooltip();
     }
 
-    private void UndoAction(object sender, EventArgs e)
+    private void UndoAction(object? sender, EventArgs e)
     {
-        if (undoStack.Count > 0)
+        if (undoStack.Count > 0 && sender is not null)
         {
             redoStack.Push(new Bitmap(bmp, Board.Width, Board.Height));
             bmp = undoStack.Pop();
@@ -655,9 +666,9 @@ public partial class PaintApp : Form
         }
     }
 
-    private void RedoAction(object sender, EventArgs e)
+    private void RedoAction(object? sender, EventArgs e)
     {
-        if (redoStack.Count > 0)
+        if (redoStack.Count > 0 && sender is not null)
         {
             undoStack.Push(new Bitmap(bmp, Board.Width, Board.Height));
             bmp = redoStack.Pop();
@@ -666,7 +677,7 @@ public partial class PaintApp : Form
         }
     }
 
-    private void HelpBtn_Click(object sender, EventArgs e)
+    private void HelpBtn_Click(object? sender, EventArgs e)
     {
         MessageBox.Show(
             "Keyboard Shortcuts:\n\n" +
@@ -773,7 +784,7 @@ public partial class PaintApp : Form
                     HelpBtn_Click(sender, e);
                     break;
                 case Keys.U:
-                    uploadBtn_Click(sender, e);
+                    UploadBtn_Click(sender, e);
                     break;
                 case Keys.V:
                     PasteImage();
@@ -794,22 +805,25 @@ public partial class PaintApp : Form
         Board.Image = bmp;
     }
 
-    private void uploadBtn_Click(object sender, EventArgs e)
+    private void UploadBtn_Click(object? sender, EventArgs e)
     {
-        var ofd = new OpenFileDialog();
-        ofd.Filter = "JPEG|*.jpg";
-        if (ofd.ShowDialog() == DialogResult.OK)
+        if (sender is not null)
         {
-            var bitmap = new Bitmap(ofd.FileName);
-            bitmap = new Bitmap(bitmap, Board.Width, Board.Height);
-            bmp = bitmap;
+            var ofd = new OpenFileDialog();
+            ofd.Filter = "JPEG|*.jpg";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                var bitmap = new Bitmap(ofd.FileName);
+                bitmap = new Bitmap(bitmap, Board.Width, Board.Height);
+                bmp = bitmap;
 
-            g = Graphics.FromImage(bmp);
-            Board.Image = bmp;
+                g = Graphics.FromImage(bmp);
+                Board.Image = bmp;
+            }
         }
     }
 
-    private void ShortcutsBtn_Click(object sender, EventArgs e)
+    private void ShortcutsBtn_Click(object? sender, EventArgs e)
     {
         HelpBtn_Click(sender, e);
     }
