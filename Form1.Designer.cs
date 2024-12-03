@@ -118,10 +118,11 @@
             flowLayoutPanel1.Controls.Add(flowLayoutPanel4);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel5);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel6);
-            flowLayoutPanel1.Dock = DockStyle.Top;
+            flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1536, 130);
+            flowLayoutPanel1.AutoSize = true;
+            flowLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel3
@@ -266,8 +267,7 @@
             ToolsLabel.Text = "Tools";
             ToolsLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // flowLayoutPanel9
-            // 
+                // flowLayoutPanel9
             flowLayoutPanel9.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel9.Controls.Add(fontLabel);
             flowLayoutPanel9.Controls.Add(fontFamilyLabel);
@@ -277,140 +277,133 @@
             flowLayoutPanel9.Controls.Add(fontSizeLabel);
             flowLayoutPanel9.Controls.Add(changeTextBtn);
             flowLayoutPanel9.Controls.Add(TypographyLabel);
-            flowLayoutPanel9.Location = new Point(170, 3);
+            flowLayoutPanel9.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel9.Location = new Point(10, 140);
+            flowLayoutPanel9.Margin = new Padding(10, 3, 3, 3);
             flowLayoutPanel9.Name = "flowLayoutPanel9";
-            flowLayoutPanel9.Size = new Size(294, 125);
+            flowLayoutPanel9.Size = new Size(154, 200);
+            flowLayoutPanel9.WrapContents = false;
             flowLayoutPanel9.TabIndex = 11;
-            // 
+
             // fontLabel
-            // 
             fontLabel.AutoSize = true;
-            fontLabel.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            fontLabel.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point);
             fontLabel.Location = new Point(3, 3);
             fontLabel.Margin = new Padding(3, 3, 3, 0);
             fontLabel.Name = "fontLabel";
-            fontLabel.Size = new Size(63, 23);
+            fontLabel.Size = new Size(50, 20);
             fontLabel.TabIndex = 10;
             fontLabel.Text = "Font :";
-            // 
+
             // fontFamilyLabel
-            // 
             fontFamilyLabel.AutoSize = true;
-            fontFamilyLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            fontFamilyLabel.Location = new Point(72, 0);
-            fontFamilyLabel.Margin = new Padding(3, 0, 80, 0);
+            fontFamilyLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            fontFamilyLabel.Location = new Point(3, 25);
+            fontFamilyLabel.Margin = new Padding(3, 0, 3, 0);
             fontFamilyLabel.Name = "fontFamilyLabel";
-            fontFamilyLabel.Size = new Size(67, 28);
+            fontFamilyLabel.Size = new Size(50, 20);
             fontFamilyLabel.TabIndex = 11;
             fontFamilyLabel.Text = "Segoe";
-            // 
+
             // label2
-            // 
             label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 31);
+            label2.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(3, 50);
             label2.Margin = new Padding(3, 3, 3, 0);
             label2.Name = "label2";
-            label2.Size = new Size(68, 23);
+            label2.Size = new Size(50, 20);
             label2.TabIndex = 12;
             label2.Text = "Style :";
-            label2.TextAlign = ContentAlignment.MiddleLeft;
-            // 
+
             // fontStyleLabel
-            // 
             fontStyleLabel.AutoSize = true;
-            fontStyleLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            fontStyleLabel.Location = new Point(77, 28);
-            fontStyleLabel.Margin = new Padding(3, 0, 120, 0);
+            fontStyleLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            fontStyleLabel.Location = new Point(3, 70);
+            fontStyleLabel.Margin = new Padding(3, 0, 3, 0);
             fontStyleLabel.Name = "fontStyleLabel";
-            fontStyleLabel.Size = new Size(78, 28);
+            fontStyleLabel.Size = new Size(70, 20);
             fontStyleLabel.TabIndex = 13;
             fontStyleLabel.Text = "Normal";
-            // 
+
             // label3
-            // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(3, 59);
+            label3.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(3, 95);
             label3.Margin = new Padding(3, 3, 3, 0);
             label3.Name = "label3";
-            label3.Size = new Size(59, 23);
+            label3.Size = new Size(50, 20);
             label3.TabIndex = 14;
             label3.Text = "Size :";
-            // 
+
             // fontSizeLabel
-            // 
             fontSizeLabel.AutoSize = true;
-            fontSizeLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            fontSizeLabel.Location = new Point(68, 56);
-            fontSizeLabel.Margin = new Padding(3, 0, 70, 0);
+            fontSizeLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            fontSizeLabel.Location = new Point(3, 115);
+            fontSizeLabel.Margin = new Padding(3, 0, 3, 0);
             fontSizeLabel.Name = "fontSizeLabel";
-            fontSizeLabel.Size = new Size(34, 28);
+            fontSizeLabel.Size = new Size(20, 20);
             fontSizeLabel.TabIndex = 15;
             fontSizeLabel.Text = "12";
-            // 
+
             // changeTextBtn
-            // 
             changeTextBtn.Cursor = Cursors.Hand;
             changeTextBtn.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            changeTextBtn.Location = new Point(175, 56);
+            changeTextBtn.Location = new Point(3, 140);
             changeTextBtn.Margin = new Padding(3, 0, 3, 0);
             changeTextBtn.Name = "changeTextBtn";
-            changeTextBtn.Size = new Size(96, 33);
+            changeTextBtn.Size = new Size(100, 30);
             changeTextBtn.TabIndex = 23;
             changeTextBtn.Text = "Change ..";
             changeTextBtn.UseVisualStyleBackColor = true;
             changeTextBtn.Click += changeFont_btn_Click;
-            // 
+
             // TypographyLabel
-            // 
-            TypographyLabel.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point);
-            TypographyLabel.Location = new Point(120, 89);
-            TypographyLabel.Margin = new Padding(120, 0, 3, 0);
+            TypographyLabel.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            TypographyLabel.Location = new Point(3, 180);
+            TypographyLabel.Margin = new Padding(3, 0, 3, 0);
             TypographyLabel.Name = "TypographyLabel";
             TypographyLabel.Padding = new Padding(0, 0, 0, 10);
-            TypographyLabel.Size = new Size(57, 40);
+            TypographyLabel.Size = new Size(100, 30);
             TypographyLabel.TabIndex = 9;
             TypographyLabel.Text = "Text";
             TypographyLabel.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // flowLayoutPanel4
-            // 
             flowLayoutPanel4.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel4.Controls.Add(sizeInput);
             flowLayoutPanel4.Controls.Add(SizeLabel);
-            flowLayoutPanel4.Location = new Point(470, 3);
+            flowLayoutPanel4.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel4.Location = new Point(10, 350);
+            flowLayoutPanel4.Margin = new Padding(10, 3, 3, 3);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Padding = new Padding(57, 27, 0, 0);
-            flowLayoutPanel4.Size = new Size(250, 125);
+            flowLayoutPanel4.Padding = new Padding(10);
+            flowLayoutPanel4.Size = new Size(154, 100);
+            flowLayoutPanel4.WrapContents = false;
             flowLayoutPanel4.TabIndex = 10;
-            // 
+
             // sizeInput
-            // 
-            sizeInput.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            sizeInput.Location = new Point(60, 30);
+            sizeInput.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            sizeInput.Location = new Point(3, 3);
             sizeInput.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             sizeInput.Name = "sizeInput";
-            sizeInput.Size = new Size(150, 30);
+            sizeInput.Size = new Size(120, 25);
             sizeInput.TabIndex = 10;
             sizeInput.TextAlign = HorizontalAlignment.Right;
             sizeInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
             sizeInput.ValueChanged += sizeInput_ValueChanged;
-            // 
+
             // SizeLabel
-            // 
-            SizeLabel.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point);
-            SizeLabel.Location = new Point(60, 63);
+            SizeLabel.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            SizeLabel.Location = new Point(3, 35);
             SizeLabel.Name = "SizeLabel";
-            SizeLabel.Padding = new Padding(23, 24, 0, 0);
-            SizeLabel.Size = new Size(121, 56);
+            SizeLabel.Padding = new Padding(0);
+            SizeLabel.Size = new Size(120, 30);
             SizeLabel.TabIndex = 9;
             SizeLabel.Text = "Size";
             SizeLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
+
             // flowLayoutPanel5
-            // 
             flowLayoutPanel5.BorderStyle = BorderStyle.FixedSingle;
+            flowLayoutPanel5.Controls.Add(ShapeLabel);
             flowLayoutPanel5.Controls.Add(LineBtn);
             flowLayoutPanel5.Controls.Add(EllipseBtn);
             flowLayoutPanel5.Controls.Add(TriangleBtn);
@@ -421,15 +414,26 @@
             flowLayoutPanel5.Controls.Add(PentagonBtn);
             flowLayoutPanel5.Controls.Add(HexagonBtn);
             flowLayoutPanel5.Controls.Add(StarBtn);
-            flowLayoutPanel5.Controls.Add(ShapeLabel);
-            flowLayoutPanel5.Location = new Point(726, 3);
+            flowLayoutPanel5.FlowDirection = FlowDirection.LeftToRight;
+            flowLayoutPanel5.Location = new Point(10, 470);
+            flowLayoutPanel5.Margin = new Padding(10, 3, 3, 3);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Padding = new Padding(15, 0, 12, 0);
-            flowLayoutPanel5.Size = new Size(240, 125);
+            flowLayoutPanel5.Padding = new Padding(10);
+            flowLayoutPanel5.Size = new Size(154, 170);
+            flowLayoutPanel5.WrapContents = true;
             flowLayoutPanel5.TabIndex = 8;
-            // 
+
+            // ShapeLabel
+            ShapeLabel.AutoSize = true;
+            ShapeLabel.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            ShapeLabel.Location = new Point(3, 393);
+            ShapeLabel.Margin = new Padding(3);
+            ShapeLabel.Name = "ShapeLabel";
+            ShapeLabel.Size = new Size(70, 20);
+            ShapeLabel.TabIndex = 12;
+            ShapeLabel.Text = "Shapes";
+
             // LineBtn
-            // 
             LineBtn.BackColor = Color.FromArgb(224, 224, 224);
             LineBtn.BackgroundImage = Properties.Resources.icons8_line_30;
             LineBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -438,17 +442,16 @@
             LineBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             LineBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             LineBtn.FlatStyle = FlatStyle.Flat;
-            LineBtn.Location = new Point(15, 5);
-            LineBtn.Margin = new Padding(0, 5, 3, 0);
+            LineBtn.Location = new Point(3, 3);
+            LineBtn.Size = new Size(32, 32); 
+            LineBtn.Margin = new Padding(3, 3, 3, 3); // Margine uniformă
             LineBtn.Name = "LineBtn";
-            LineBtn.Size = new Size(36, 32);
             LineBtn.TabIndex = 13;
             LineBtn.Tag = "Line";
             LineBtn.UseVisualStyleBackColor = false;
             LineBtn.Click += LineBtn_Click;
-            // 
+
             // EllipseBtn
-            // 
             EllipseBtn.BackColor = Color.FromArgb(224, 224, 224);
             EllipseBtn.BackgroundImage = Properties.Resources.icons8_circle_30;
             EllipseBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -457,17 +460,16 @@
             EllipseBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             EllipseBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             EllipseBtn.FlatStyle = FlatStyle.Flat;
-            EllipseBtn.Location = new Point(58, 5);
-            EllipseBtn.Margin = new Padding(4, 5, 3, 0);
+            EllipseBtn.Location = new Point(3, 42);
+            EllipseBtn.Margin = new Padding(3, 3, 3, 3);
             EllipseBtn.Name = "EllipseBtn";
-            EllipseBtn.Size = new Size(36, 32);
+            EllipseBtn.Size = new Size(32, 32);
             EllipseBtn.TabIndex = 15;
             EllipseBtn.Tag = "Ellipse";
             EllipseBtn.UseVisualStyleBackColor = false;
             EllipseBtn.Click += EllipseBtn_Click;
-            // 
+
             // TriangleBtn
-            // 
             TriangleBtn.BackColor = Color.FromArgb(224, 224, 224);
             TriangleBtn.BackgroundImage = (Image)resources.GetObject("TriangleBtn.BackgroundImage");
             TriangleBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -476,17 +478,16 @@
             TriangleBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             TriangleBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             TriangleBtn.FlatStyle = FlatStyle.Flat;
-            TriangleBtn.Location = new Point(102, 5);
-            TriangleBtn.Margin = new Padding(5, 5, 3, 0);
+            TriangleBtn.Location = new Point(3, 81);
+            TriangleBtn.Margin = new Padding(3, 3, 3, 3);
             TriangleBtn.Name = "TriangleBtn";
-            TriangleBtn.Size = new Size(36, 32);
+            TriangleBtn.Size = new Size(32, 32);
             TriangleBtn.TabIndex = 17;
             TriangleBtn.Tag = "Triangle";
             TriangleBtn.UseVisualStyleBackColor = false;
             TriangleBtn.Click += Triangle_Click;
-            // 
+
             // RightTriangleBtn
-            // 
             RightTriangleBtn.BackColor = Color.FromArgb(224, 224, 224);
             RightTriangleBtn.BackgroundImage = (Image)resources.GetObject("RightTriangleBtn.BackgroundImage");
             RightTriangleBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -495,17 +496,16 @@
             RightTriangleBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             RightTriangleBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             RightTriangleBtn.FlatStyle = FlatStyle.Flat;
-            RightTriangleBtn.Location = new Point(144, 5);
-            RightTriangleBtn.Margin = new Padding(3, 5, 3, 0);
+            RightTriangleBtn.Location = new Point(3, 120);
+            RightTriangleBtn.Margin = new Padding(3, 3, 3, 3);
             RightTriangleBtn.Name = "RightTriangleBtn";
-            RightTriangleBtn.Size = new Size(36, 32);
+            RightTriangleBtn.Size = new Size(32, 32);
             RightTriangleBtn.TabIndex = 16;
             RightTriangleBtn.Tag = "RightTriangle";
             RightTriangleBtn.UseVisualStyleBackColor = false;
             RightTriangleBtn.Click += RightTriangleBtn_Click;
-            // 
+
             // RectangleBtn
-            // 
             RectangleBtn.BackColor = Color.FromArgb(224, 224, 224);
             RectangleBtn.BackgroundImage = (Image)resources.GetObject("RectangleBtn.BackgroundImage");
             RectangleBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -514,17 +514,16 @@
             RectangleBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             RectangleBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             RectangleBtn.FlatStyle = FlatStyle.Flat;
-            RectangleBtn.Location = new Point(183, 5);
-            RectangleBtn.Margin = new Padding(0, 5, 3, 0);
+            RectangleBtn.Location = new Point(3, 159);
+            RectangleBtn.Margin = new Padding(3, 3, 3, 3);
             RectangleBtn.Name = "RectangleBtn";
-            RectangleBtn.Size = new Size(36, 32);
+            RectangleBtn.Size = new Size(32, 32);
             RectangleBtn.TabIndex = 14;
             RectangleBtn.Tag = "Rectangle";
             RectangleBtn.UseVisualStyleBackColor = false;
             RectangleBtn.Click += RectangleBtn_Click;
-            // 
+
             // RombBtn
-            // 
             RombBtn.BackColor = Color.FromArgb(224, 224, 224);
             RombBtn.BackgroundImage = (Image)resources.GetObject("RombBtn.BackgroundImage");
             RombBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -533,17 +532,16 @@
             RombBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             RombBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             RombBtn.FlatStyle = FlatStyle.Flat;
-            RombBtn.Location = new Point(15, 42);
-            RombBtn.Margin = new Padding(0, 5, 3, 3);
+            RombBtn.Location = new Point(3, 198);
+            RombBtn.Margin = new Padding(3, 3, 3, 3);
             RombBtn.Name = "RombBtn";
-            RombBtn.Size = new Size(36, 32);
+            RombBtn.Size = new Size(32, 32);
             RombBtn.TabIndex = 21;
             RombBtn.Tag = "Romb";
             RombBtn.UseVisualStyleBackColor = false;
             RombBtn.Click += RombBtn_Click;
-            // 
+
             // TrapezBtn
-            // 
             TrapezBtn.BackColor = Color.FromArgb(224, 224, 224);
             TrapezBtn.BackgroundImage = (Image)resources.GetObject("TrapezBtn.BackgroundImage");
             TrapezBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -552,17 +550,15 @@
             TrapezBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             TrapezBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             TrapezBtn.FlatStyle = FlatStyle.Flat;
-            TrapezBtn.Location = new Point(57, 42);
-            TrapezBtn.Margin = new Padding(3, 5, 3, 3);
+            TrapezBtn.Location = new Point(3, 237);
+            TrapezBtn.Margin = new Padding(3, 3, 3, 3);
             TrapezBtn.Name = "TrapezBtn";
-            TrapezBtn.Size = new Size(36, 32);
+            TrapezBtn.Size = new Size(32, 32);
             TrapezBtn.TabIndex = 22;
             TrapezBtn.Tag = "Trapez";
             TrapezBtn.UseVisualStyleBackColor = false;
             TrapezBtn.Click += HeartBtn_Click;
-            // 
             // PentagonBtn
-            // 
             PentagonBtn.BackColor = Color.FromArgb(224, 224, 224);
             PentagonBtn.BackgroundImage = (Image)resources.GetObject("PentagonBtn.BackgroundImage");
             PentagonBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -571,17 +567,16 @@
             PentagonBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             PentagonBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             PentagonBtn.FlatStyle = FlatStyle.Flat;
-            PentagonBtn.Location = new Point(99, 42);
-            PentagonBtn.Margin = new Padding(3, 5, 3, 3);
+            PentagonBtn.Location = new Point(3, 276);
+            PentagonBtn.Margin = new Padding(3, 3, 3, 3);
             PentagonBtn.Name = "PentagonBtn";
-            PentagonBtn.Size = new Size(36, 32);
+            PentagonBtn.Size = new Size(32, 32);
             PentagonBtn.TabIndex = 18;
             PentagonBtn.Tag = "Pentagon";
             PentagonBtn.UseVisualStyleBackColor = false;
             PentagonBtn.Click += PentagonBtn_Click;
-            // 
+
             // HexagonBtn
-            // 
             HexagonBtn.BackColor = Color.FromArgb(224, 224, 224);
             HexagonBtn.BackgroundImage = (Image)resources.GetObject("HexagonBtn.BackgroundImage");
             HexagonBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -590,17 +585,16 @@
             HexagonBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             HexagonBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             HexagonBtn.FlatStyle = FlatStyle.Flat;
-            HexagonBtn.Location = new Point(141, 42);
-            HexagonBtn.Margin = new Padding(3, 5, 3, 3);
+            HexagonBtn.Location = new Point(3, 315);
+            HexagonBtn.Margin = new Padding(3, 3, 3, 3);
             HexagonBtn.Name = "HexagonBtn";
-            HexagonBtn.Size = new Size(36, 32);
+            HexagonBtn.Size = new Size(32, 32);
             HexagonBtn.TabIndex = 19;
             HexagonBtn.Tag = "Hexagon";
             HexagonBtn.UseVisualStyleBackColor = false;
             HexagonBtn.Click += HexagonBtn_Click;
-            // 
+
             // StarBtn
-            // 
             StarBtn.BackColor = Color.FromArgb(224, 224, 224);
             StarBtn.BackgroundImage = (Image)resources.GetObject("StarBtn.BackgroundImage");
             StarBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -609,26 +603,17 @@
             StarBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             StarBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             StarBtn.FlatStyle = FlatStyle.Flat;
-            StarBtn.Location = new Point(183, 42);
-            StarBtn.Margin = new Padding(3, 5, 3, 3);
+            StarBtn.Location = new Point(3, 354);
+            StarBtn.Margin = new Padding(3, 3, 3, 3);
             StarBtn.Name = "StarBtn";
-            StarBtn.Size = new Size(36, 32);
+            StarBtn.Size = new Size(32, 32);
             StarBtn.TabIndex = 20;
             StarBtn.Tag = "Star";
             StarBtn.UseVisualStyleBackColor = false;
             StarBtn.Click += StarBtn_Click;
-            // 
-            // ShapeLabel
-            // 
-            ShapeLabel.AutoSize = true;
-            ShapeLabel.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point);
-            ShapeLabel.Location = new Point(75, 87);
-            ShapeLabel.Margin = new Padding(60, 10, 0, 0);
-            ShapeLabel.Name = "ShapeLabel";
-            ShapeLabel.Size = new Size(93, 27);
-            ShapeLabel.TabIndex = 12;
-            ShapeLabel.Text = "Shapes";
-            // 
+
+            
+
             // flowLayoutPanel6
             // 
             flowLayoutPanel6.BorderStyle = BorderStyle.FixedSingle;
@@ -666,15 +651,18 @@
             flowLayoutPanel6.Location = new Point(972, 3);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             flowLayoutPanel6.Padding = new Padding(0, 7, 0, 0);
-            flowLayoutPanel6.Size = new Size(560, 125);
+            flowLayoutPanel6.Size = new Size(162, 325); 
             flowLayoutPanel6.TabIndex = 9;
+            flowLayoutPanel6.FlowDirection = FlowDirection.LeftToRight;
+            flowLayoutPanel6.WrapContents = true;
             // 
             // black
             // 
             black.BackColor = Color.Black;
             black.Location = new Point(3, 7);
             black.Name = "black";
-            black.Size = new Size(34, 33);
+            black.Size = new Size(34, 34);
+            black.Margin = new Padding(3);
             black.TabIndex = 37;
             black.Tag = "black";
             black.Click += color_Click;
@@ -684,7 +672,8 @@
             white.BackColor = Color.White;
             white.Location = new Point(43, 7);
             white.Name = "white";
-            white.Size = new Size(34, 33);
+            white.Size = new Size(34, 34);
+            white.Margin = new Padding(3);
             white.TabIndex = 12;
             white.Tag = "white";
             white.Click += color_Click;
@@ -694,7 +683,8 @@
             red.BackColor = Color.Red;
             red.Location = new Point(83, 7);
             red.Name = "red";
-            red.Size = new Size(34, 33);
+            red.Size = new Size(34, 34);
+            red.Margin = new Padding(3);
             red.TabIndex = 13;
             red.Tag = "red";
             red.Click += color_Click;
@@ -704,7 +694,8 @@
             orange.BackColor = Color.Orange;
             orange.Location = new Point(123, 7);
             orange.Name = "orange";
-            orange.Size = new Size(34, 33);
+            orange.Size = new Size(34, 34);
+            orange.Margin = new Padding(3);
             orange.TabIndex = 14;
             orange.Tag = "orange";
             orange.Click += color_Click;
@@ -714,7 +705,8 @@
             yellow.BackColor = Color.Yellow;
             yellow.Location = new Point(163, 7);
             yellow.Name = "yellow";
-            yellow.Size = new Size(34, 33);
+            yellow.Size = new Size(34, 34);
+            orange.Margin = new Padding(3);
             yellow.TabIndex = 15;
             yellow.Tag = "yellow";
             yellow.Click += color_Click;
@@ -724,7 +716,8 @@
             green.BackColor = Color.Green;
             green.Location = new Point(203, 7);
             green.Name = "green";
-            green.Size = new Size(34, 33);
+            green.Size = new Size(34, 34);
+            green.Margin = new Padding(3);
             green.TabIndex = 16;
             green.Tag = "green";
             green.Click += color_Click;
@@ -734,7 +727,8 @@
             blue.BackColor = Color.Aqua;
             blue.Location = new Point(243, 7);
             blue.Name = "blue";
-            blue.Size = new Size(34, 33);
+            blue.Size = new Size(34, 34);
+            blue.Margin = new Padding(3);
             blue.TabIndex = 17;
             blue.Tag = "blue";
             blue.Click += color_Click;
@@ -744,7 +738,8 @@
             violet.BackColor = Color.Violet;
             violet.Location = new Point(283, 7);
             violet.Name = "violet";
-            violet.Size = new Size(34, 33);
+            violet.Size = new Size(34, 34);
+            violet.Margin = new Padding(3);
             violet.TabIndex = 18;
             violet.Tag = "violet";
             violet.Click += color_Click;
@@ -754,7 +749,8 @@
             pink.BackColor = Color.Pink;
             pink.Location = new Point(323, 7);
             pink.Name = "pink";
-            pink.Size = new Size(34, 33);
+            pink.Size = new Size(34, 34);
+            pink.Margin = new Padding(3);
             pink.TabIndex = 19;
             pink.Tag = "pink";
             pink.Click += color_Click;
@@ -764,7 +760,8 @@
             brown.BackColor = Color.Brown;
             brown.Location = new Point(363, 7);
             brown.Name = "brown";
-            brown.Size = new Size(34, 33);
+            brown.Size = new Size(34, 34);
+            brown.Margin = new Padding(3);
             brown.TabIndex = 20;
             brown.Tag = "brown";
             brown.Click += color_Click;
@@ -774,7 +771,8 @@
             peru.BackColor = Color.Peru;
             peru.Location = new Point(403, 7);
             peru.Name = "peru";
-            peru.Size = new Size(34, 33);
+            peru.Size = new Size(34, 34);
+            peru.Margin = new Padding(3);
             peru.TabIndex = 21;
             peru.Tag = "peru";
             peru.Click += color_Click;
@@ -784,7 +782,8 @@
             bisque.BackColor = Color.Bisque;
             bisque.Location = new Point(443, 7);
             bisque.Name = "bisque";
-            bisque.Size = new Size(34, 33);
+            bisque.Size = new Size(34, 34);
+            bisque.Margin = new Padding(3);
             bisque.TabIndex = 23;
             bisque.Tag = "bisque";
             bisque.Click += color_Click;
@@ -794,7 +793,8 @@
             maroon.BackColor = Color.Maroon;
             maroon.Location = new Point(483, 7);
             maroon.Name = "maroon";
-            maroon.Size = new Size(34, 33);
+            maroon.Size = new Size(34, 34);
+            maroon.Margin = new Padding(3);
             maroon.TabIndex = 24;
             maroon.Tag = "maroon";
             maroon.Click += color_Click;
@@ -805,7 +805,8 @@
             coral.Location = new Point(3, 47);
             coral.Margin = new Padding(3, 7, 3, 0);
             coral.Name = "coral";
-            coral.Size = new Size(34, 33);
+            coral.Size = new Size(34, 34);
+            coral.Margin = new Padding(3);
             coral.TabIndex = 25;
             coral.Tag = "coral";
             coral.Click += color_Click;
@@ -816,7 +817,8 @@
             olive.Location = new Point(43, 47);
             olive.Margin = new Padding(3, 7, 3, 0);
             olive.Name = "olive";
-            olive.Size = new Size(34, 33);
+            olive.Size = new Size(34, 34);
+            olive.Margin = new Padding(3);
             olive.TabIndex = 26;
             olive.Tag = "olive";
             olive.Click += color_Click;
@@ -827,7 +829,8 @@
             gold.Location = new Point(83, 47);
             gold.Margin = new Padding(3, 7, 3, 0);
             gold.Name = "gold";
-            gold.Size = new Size(34, 33);
+            gold.Size = new Size(34, 34);
+            gold.Margin = new Padding(3);
             gold.TabIndex = 27;
             gold.Tag = "gold";
             gold.Click += color_Click;
@@ -838,7 +841,8 @@
             palegreen.Location = new Point(123, 47);
             palegreen.Margin = new Padding(3, 7, 3, 0);
             palegreen.Name = "palegreen";
-            palegreen.Size = new Size(34, 33);
+            palegreen.Size = new Size(34, 34);
+            palegreen.Margin = new Padding(3);
             palegreen.TabIndex = 28;
             palegreen.Tag = "palegreen";
             palegreen.Click += color_Click;
@@ -849,7 +853,8 @@
             highlight.Location = new Point(163, 47);
             highlight.Margin = new Padding(3, 7, 3, 0);
             highlight.Name = "highlight";
-            highlight.Size = new Size(34, 33);
+            highlight.Size = new Size(34, 34);
+            highlight.Margin = new Padding(3);
             highlight.TabIndex = 29;
             highlight.Tag = "highlight";
             highlight.Click += color_Click;
@@ -860,7 +865,8 @@
             hotpink.Location = new Point(203, 47);
             hotpink.Margin = new Padding(3, 7, 3, 0);
             hotpink.Name = "hotpink";
-            hotpink.Size = new Size(34, 33);
+            hotpink.Size = new Size(34, 34);
+            hotpink.Margin = new Padding(3);
             hotpink.TabIndex = 30;
             hotpink.Tag = "hotpink";
             hotpink.Click += color_Click;
@@ -871,7 +877,8 @@
             greenyellow.Location = new Point(243, 47);
             greenyellow.Margin = new Padding(3, 7, 3, 0);
             greenyellow.Name = "greenyellow";
-            greenyellow.Size = new Size(34, 33);
+            greenyellow.Size = new Size(34, 34);
+            greenyellow.Margin = new Padding(3);
             greenyellow.TabIndex = 31;
             greenyellow.Tag = "greenyellow";
             greenyellow.Click += color_Click;
@@ -882,7 +889,8 @@
             fuchsia.Location = new Point(283, 47);
             fuchsia.Margin = new Padding(3, 7, 3, 0);
             fuchsia.Name = "fuchsia";
-            fuchsia.Size = new Size(34, 33);
+            fuchsia.Size = new Size(34, 34);
+            fuchsia.Margin = new Padding(3);
             fuchsia.TabIndex = 32;
             fuchsia.Tag = "fuchsia";
             fuchsia.Click += color_Click;
@@ -893,7 +901,8 @@
             turquoise.Location = new Point(323, 47);
             turquoise.Margin = new Padding(3, 7, 3, 0);
             turquoise.Name = "turquoise";
-            turquoise.Size = new Size(34, 33);
+            turquoise.Size = new Size(34, 34);
+            turquoise.Margin = new Padding(3);
             turquoise.TabIndex = 36;
             turquoise.Tag = "turquoise";
             turquoise.Click += color_Click;
@@ -904,7 +913,8 @@
             lightcoral.Location = new Point(363, 47);
             lightcoral.Margin = new Padding(3, 7, 3, 0);
             lightcoral.Name = "lightcoral";
-            lightcoral.Size = new Size(34, 33);
+            lightcoral.Size = new Size(34, 34);
+            lightcoral.Margin = new Padding(3);
             lightcoral.TabIndex = 34;
             lightcoral.Tag = "lightcoral";
             lightcoral.Click += color_Click;
@@ -915,7 +925,8 @@
             indigo.Location = new Point(403, 47);
             indigo.Margin = new Padding(3, 7, 3, 0);
             indigo.Name = "indigo";
-            indigo.Size = new Size(34, 33);
+            indigo.Size = new Size(34, 34);
+            indigo.Margin = new Padding(3);
             indigo.TabIndex = 33;
             indigo.Tag = "indigo";
             indigo.Click += color_Click;
@@ -926,7 +937,8 @@
             aquamarine.Location = new Point(443, 47);
             aquamarine.Margin = new Padding(3, 7, 3, 0);
             aquamarine.Name = "aquamarine";
-            aquamarine.Size = new Size(34, 33);
+            aquamarine.Size = new Size(34, 34);
+            aquamarine.Margin = new Padding(3);
             aquamarine.TabIndex = 35;
             aquamarine.Tag = "aquamarine";
             aquamarine.Click += color_Click;
@@ -937,23 +949,22 @@
             midnightBlue.Location = new Point(483, 47);
             midnightBlue.Margin = new Padding(3, 7, 3, 0);
             midnightBlue.Name = "midnightBlue";
-            midnightBlue.Size = new Size(34, 33);
+            midnightBlue.Size = new Size(34, 34);
+            midnightBlue.Margin = new Padding(3);
             midnightBlue.TabIndex = 11;
             midnightBlue.Tag = "midnightBlue";
             midnightBlue.Click += color_Click;
             // 
+            //
             // customColor
-            // 
-            customColor.Cursor = Cursors.Hand;
-            customColor.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            customColor.Location = new Point(3, 91);
-            customColor.Margin = new Padding(3, 11, 3, 4);
-            customColor.Name = "customColor";
-            customColor.Size = new Size(86, 31);
-            customColor.TabIndex = 22;
+            //
             customColor.Text = "Add ...";
-            customColor.UseVisualStyleBackColor = true;
+            customColor.BackColor = Color.LightGray;
+            customColor.Margin = new Padding(30, 5, 10, 10); // Adaugă spațiu în partea de sus
+            customColor.Size = new Size(100, 30);
             customColor.Click += customColor_Click;
+            flowLayoutPanel6.SetFlowBreak(customColor, true); // Asigură-te că butonul este pe o linie nouă
+
             // 
             // ColorLabel
             // 
