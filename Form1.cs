@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using FinalPaint.Properties;
 using Rect = System.Drawing.Rectangle;
@@ -55,6 +56,9 @@ public partial class PaintApp : Form
     private Tools Tool, lastTool;
     private readonly Control[] tools;
 
+    private bool isDraggingSelection = false;
+    private Point selectionOffset;
+    private Bitmap selectedRegion;
 
     private readonly Stack<Bitmap> undoStack;
 
@@ -242,10 +246,24 @@ public partial class PaintApp : Form
     {
         if ((e.Button & MouseButtons.Left) != 0)
         {
-            isDrawing = true;
-            py = e.Location;
-            cX = e.X;
-            cY = e.Y;
+            if (Tool == Tools.Selection && isSelected && SelectionRect.Contains(e.Location))
+            {
+                isDraggingSelection = true;
+                isDrawing = false; 
+                selectionOffset = new Point(e.X - SelectionRect.X, e.Y - SelectionRect.Y);
+                using (var brush = new SolidBrush(Color.White))
+                {
+                    g.FillRectangle(brush, SelectionRect);
+                }
+                Board.Invalidate();
+            }
+            else
+            {
+                isDrawing = true;
+                py = e.Location;
+                cX = e.X;
+                cY = e.Y;
+            }
         }
     }
 
@@ -295,7 +313,22 @@ public partial class PaintApp : Form
 
     private void Board_MouseMove(object sender, MouseEventArgs e)
     {
-        if (isDrawing)
+        x = e.X;
+        y = e.Y;
+  
+        if (isDrawing && Tool == Tools.Selection && !isDraggingSelection)
+        {
+            Board.Invalidate();
+        }
+        else if(isDraggingSelection)
+        {
+            int newX = e.X - selectionOffset.X;
+            int newY = e.Y - selectionOffset.Y;
+
+            SelectionRect = new Rect(newX, newY, SelectionRect.Width, SelectionRect.Height);
+            Board.Invalidate();
+        }
+        else if (isDrawing && Tool != Tools.Selection)
         {
             px = e.Location;
 
@@ -324,15 +357,20 @@ public partial class PaintApp : Form
 
             py = px;
 
-            
+
+        }
+
+        if (Tool == Tools.Selection && isSelected && SelectionRect.Contains(e.Location))
+        {
+            Board.Cursor = Cursors.SizeAll;
+        }
+        else if (Tool == Tools.Selection)
+        {
+            Board.Cursor = Cursors.Cross;
         }
 
         Board.Refresh();
-
-        x = e.X;
-        y = e.Y;
-
-        locationLabel.Text = "Location : {X=" + x + ", Y=" + y + "}";
+        locationLabel.Text = $"Location : {{X={x}, Y={y}}}";
     }
 
     private bool IsEqualTool(Tools tool)
@@ -343,37 +381,56 @@ public partial class PaintApp : Form
     private void Board_MouseUp(object sender, MouseEventArgs e)
     {
         isDrawing = false;
-        if (e.Button == MouseButtons.Left)
+        if (isDraggingSelection)
         {
-            if (Array.Exists(fillTools, IsEqualTool))
+            isDraggingSelection = false;
+            if (selectedRegion != null)
             {
-                var tool = Utils.GetTool(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g);
-                Draw(tool);
-
-                var bitmap = bmp.Clone(new Rect(0, 0, Board.Width, Board.Height),
-                    bmp.PixelFormat);
-
+                g.DrawImage(selectedRegion, SelectionRect.Location);
+                var bitmap = bmp.Clone(new Rect(0, 0, Board.Width, Board.Height), bmp.PixelFormat);
                 undoStack.Push(bitmap);
+            }
+            Board.Invalidate();
+        }
+        else
+        {
+            if (Array.Exists(fillTools, IsEqualTool) && Tool != Tools.Selection)
+            {
+                var finalTool = Utils.GetTool(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g);
+                Draw(finalTool);
+
+                var bitmap = bmp.Clone(new Rect(0, 0, Board.Width, Board.Height), bmp.PixelFormat);
+                undoStack.Push(bitmap);
+
+                Board.Invalidate();
             }
 
             if (Tool == Tools.Selection)
             {
                 isSelected = true;
 
-
                 var StartPosition = new Point(Math.Min(cX, x), Math.Min(cY, y));
-                var size = new Size(Math.Abs(cX - x), Math.Abs(cY - y));
+                var rectSize = new Size(Math.Abs(cX - x), Math.Abs(cY - y));
 
-                SelectionRect = new Rect(StartPosition, size);
+                SelectionRect = new Rect(StartPosition, rectSize);
+                if (SelectionRect.Width > 0 && SelectionRect.Height > 0)
+                {
+                    selectedRegion = bmp.Clone(SelectionRect, bmp.PixelFormat);
+                }
+
+                Board.Invalidate();
             }
             else
             {
-                isSelected = false;
-                SelectionRect = new Rect(0, 0, 0, 0);
+                if (Tool != Tools.Selection)
+                {
+                    isSelected = false;
+                    SelectionRect = new Rect(0, 0, 0, 0);
+                    selectedRegion = null;
+                }
             }
         }
     }
-
 
     private void ChangeSize()
     {
@@ -483,18 +540,59 @@ public partial class PaintApp : Form
 
     private void Board_Paint(object sender, PaintEventArgs e)
     {
-        var g = e.Graphics;
-
-        if (isDrawing && Array.Exists(fillTools, IsEqualTool))
+        e.Graphics.DrawImage(bmp, 0, 0);
+        if (Tool == Tools.Selection && isDrawing && !isDraggingSelection)
         {
-            var tool = Utils.GetTool(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g);
-            Draw(tool);
+            var startX = Math.Min(cX, x);
+            var startY = Math.Min(cY, y);
+            var width = Math.Abs(cX - x);
+            var height = Math.Abs(cY - y);
+
+            using (var dashedPen = new Pen(Color.FromArgb(145, 200, 228), 2) { DashStyle = DashStyle.Dash })
+            {
+                e.Graphics.DrawRectangle(dashedPen, new Rect(startX, startY, width, height));
+            }
+        }
+        if (isDraggingSelection && selectedRegion != null)
+        {
+            using (var dashedPen = new Pen(Color.FromArgb(145, 200, 228), 2) { DashStyle = DashStyle.Dash })
+            {
+                e.Graphics.DrawRectangle(dashedPen, SelectionRect);
+            }
+            e.Graphics.DrawImage(selectedRegion, SelectionRect.Location);
+        }
+        else if (isSelected && selectedRegion != null && !isDraggingSelection)
+        {
+            using (var dashedPen = new Pen(Color.FromArgb(145, 200, 228), 2) { DashStyle = DashStyle.Dash })
+            {
+                e.Graphics.DrawRectangle(dashedPen, SelectionRect);
+            }
+        }
+
+        if (isDrawing && Array.Exists(fillTools, IsEqualTool) && Tool != Tools.Selection)
+        {
+            var previewTool = Utils.GetTool(p, Tool, size, color, new Point(cX, cY), new Point(x, y), e.Graphics);
+            Draw(previewTool);
         }
     }
 
 
     private void Board_Click(object sender, EventArgs e)
     {
+
+        if (Tool == Tools.Selection)
+        {
+            var me = (MouseEventArgs)e;
+            if (isSelected && !SelectionRect.Contains(me.Location))
+            {
+                isSelected = false;
+                selectedRegion = null;
+                Board.Cursor = Cursors.Default;
+                SelectionRect = new Rect(0, 0, 0, 0);
+                Board.Invalidate();
+            }
+        }
+
         if (Tool == Tools.Fill)
         {
             var me = (MouseEventArgs)e;

@@ -1,4 +1,5 @@
-﻿using Rect = System.Drawing.Rectangle;
+﻿using System.Drawing.Drawing2D;
+using Rect = System.Drawing.Rectangle;
 
 namespace FinalPaint;
 
@@ -18,6 +19,7 @@ internal class Selection : ToolControl
         var rect = new Rect(StartPosition, size);
         P.Color = Color.FromArgb(145, 200, 228);
         P.Width = 2;
+        P.DashStyle = DashStyle.Dash;
         G.DrawRectangle(P, rect);
     }
 }
