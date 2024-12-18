@@ -19,7 +19,7 @@ internal class Typography : ToolControl
         this.control = control;
     }
 
-    public new void Draw()
+    public new void Draw(Color backgroundColor)
     {
         if (activeTextBox != null)
         {
@@ -43,7 +43,7 @@ internal class Typography : ToolControl
             Location = Start,
             Font = Font,
             BorderStyle = BorderStyle.FixedSingle,
-            BackColor = Color.White 
+            BackColor = backgroundColor
         };
 
         control.Controls.Add(textBox);

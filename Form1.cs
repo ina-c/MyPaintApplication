@@ -10,6 +10,7 @@ public partial class PaintApp : Form
 {
     private Bitmap bmp;
     private Color color;
+    private Color backgroundColor = Color.White; // Ad?ugat
 
     private readonly ContextMenuStrip ContextMenu;
     private readonly ToolStripMenuItem ContextMenuFileAbout;
@@ -35,6 +36,7 @@ public partial class PaintApp : Form
 
     private readonly ToolStripMenuItem MenuEdit;
     private readonly ToolStripMenuItem MenuEditRedo;
+    private readonly ToolStripMenuItem MenuEditChangeBackgroundColor;
     private readonly ToolStripMenuItem MenuEditReset;
     private readonly ToolStripMenuItem MenuEditUndo;
     private readonly ToolStripMenuItem MenuFile;
@@ -73,7 +75,7 @@ public partial class PaintApp : Form
         Text = "Paint";
 
         g = Graphics.FromImage(bmp);
-        g.Clear(Color.White);
+        g.Clear(backgroundColor);
         Board.Image = bmp;
 
         var fontFamily = new FontFamily("Segoe UI");
@@ -81,9 +83,11 @@ public partial class PaintApp : Form
 
         color = Color.Black;
         size = pencilSize = 1;
-        sizeInput.Maximum = 10;
+        sizeInput.Maximum = 50;
         Tool = Tools.Pencil;
         lastTool = Tools.Pencil;
+
+        p = new Pen(color, pencilSize);
 
         tools = new Control[]
         {
@@ -157,13 +161,20 @@ public partial class PaintApp : Form
         MenuEditRedo.ShowShortcutKeys = true;
         MenuEditRedo.Click += RedoAction;
 
+        MenuEditChangeBackgroundColor = new ToolStripMenuItem("Change Background Color");
+        MenuEditChangeBackgroundColor.ShortcutKeys = Keys.Control | Keys.B;
+        MenuEditChangeBackgroundColor.ShowShortcutKeys = true;
+        MenuEditChangeBackgroundColor.Click += BackgroundColorChange;
+
         MenuEdit.DropDownItems.AddRange(new ToolStripItem[]
         {
             MenuEditReset,
             new ToolStripSeparator(),
             MenuEditUndo,
             new ToolStripSeparator(),
-            MenuEditRedo
+            MenuEditRedo,
+            new ToolStripSeparator(),
+            MenuEditChangeBackgroundColor
         });
 
 
@@ -251,7 +262,7 @@ public partial class PaintApp : Form
                 isDraggingSelection = true;
                 isDrawing = false; 
                 selectionOffset = new Point(e.X - SelectionRect.X, e.Y - SelectionRect.Y);
-                using (var brush = new SolidBrush(Color.White))
+                using (var brush = new SolidBrush(backgroundColor))
                 {
                     g.FillRectangle(brush, SelectionRect);
                 }
@@ -276,7 +287,7 @@ public partial class PaintApp : Form
                 line.Draw();
                 break;
             case Eraser eraser:
-                eraser.Draw();
+                eraser.Draw(backgroundColor);
                 break;
             case Fill fill:
                 fill.Draw();
@@ -335,8 +346,8 @@ public partial class PaintApp : Form
 
             if (Array.Exists(sampleTools, IsEqualTool))
             {
-                var size = Tool == Tools.Pencil ? pencilSize : this.size;
-
+                var size = Tool == (Tools.Pencil | Tools.Eraser) ? pencilSize : this.size;
+               
                 var tool = Utils.GetTool(p, Tool, size, color, py, px, g);
                 Draw(tool);
 
@@ -464,6 +475,15 @@ public partial class PaintApp : Form
                 bmp.PixelFormat);
 
             undoStack.Push(bitmap);
+        }
+
+        if (Tool == Tools.Eraser)
+        {
+            p = new Pen(backgroundColor, 20*pencilSize);
+        }
+        else
+        {
+            p = new Pen(color, pencilSize);
         }
     }
 
@@ -620,12 +640,12 @@ public partial class PaintApp : Form
 
         if (Tool == Tools.Typography)
             new Typography(p, Tools.Typography, size, color, new Point(x, y), new Point(x, y), g, Board, font)
-                .Draw();
+                .Draw(backgroundColor);
 
         if (Tool == Tools.Selection)
         {
             isSelected = false;
-            g.DrawRectangle(new Pen(Color.White, 3), SelectionRect);
+            g.DrawRectangle(new Pen(backgroundColor, 3), SelectionRect);
         }
     }
 
@@ -644,6 +664,13 @@ public partial class PaintApp : Form
             sizeInput.Maximum = 10;
 
             p = new Pen(color, pencilSize);
+        }
+        else if (Tool == Tools.Eraser)
+        {
+            pencilSize = (int)sizeInput.Value;
+            sizeInput.Maximum = 100;
+
+            p = new Pen(backgroundColor, pencilSize); // Utilizeaz? backgroundColor pentru radier?
         }
 
         else
@@ -700,8 +727,18 @@ public partial class PaintApp : Form
     {
         if (sender is not null)
         {
-            g.Clear(Color.White);
+            g.Clear(backgroundColor);
             Board.Image = bmp;
+
+            var textBoxes = Board.Controls.OfType<TextBox>().ToList();
+            foreach (var tb in textBoxes)
+            {
+                Board.Controls.Remove(tb);
+                tb.Dispose();
+            }
+
+            Typography.activeTextBox = null;
+            Typography.activeTypography = null;
         }
     }
 
@@ -768,6 +805,28 @@ public partial class PaintApp : Form
             Board.Image = bmp;
         }
     }
+
+    private void BackgroundColorChange(object? sender, EventArgs e)
+    {
+        using (var colorDialog = new ColorDialog())
+        {
+            colorDialog.Color = backgroundColor;
+
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                backgroundColor = colorDialog.Color;
+                g.Clear(backgroundColor);
+                Board.Invalidate(); 
+                currentColor.BackColor = backgroundColor;
+
+                if (Tool == Tools.Eraser)
+                {
+                    p = new Pen(backgroundColor, pencilSize);
+                }
+            }
+        }
+    }
+
 
     private void RedoAction(object? sender, EventArgs e)
     {

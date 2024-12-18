@@ -7,9 +7,9 @@ internal class Eraser : ToolControl
     {
     }
 
-    public new void Draw()
+    public new void Draw(Color backgroundColor)
     {
-        P.Color = Color.White;
+        P.Color = backgroundColor;
         G.DrawLine(P, Start, End);
     }
 }
