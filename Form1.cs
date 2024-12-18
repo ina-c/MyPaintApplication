@@ -579,6 +579,11 @@ public partial class PaintApp : Form
 
     private void Board_Click(object sender, EventArgs e)
     {
+        if (Typography.activeTextBox != null)
+        {
+            Typography.activeTextBox.Focus();
+            this.ActiveControl = null;
+        }
 
         if (Tool == Tools.Selection)
         {
