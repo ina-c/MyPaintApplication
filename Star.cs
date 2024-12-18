@@ -9,20 +9,30 @@ internal class Star : ToolControl
 
     public new void Draw()
     {
-        Point[] curvePoints =
-        {
-            new(Start.X + (End.X - Start.X) / 2, Start.Y),
-            new(Start.X + (End.X - Start.X) / 3, Start.Y + (End.Y - Start.Y) / 3),
-            new(Start.X, Start.Y + (End.Y - Start.Y) / 3),
-            new(Start.X + (End.X - Start.X) / 4, Start.Y + (End.Y - Start.Y) / 2),
-            new(Start.X, End.Y),
-            new(Start.X + (End.X - Start.X) / 2, Start.Y + Start.Y / 10 + (End.Y - Start.Y) / 2),
-            new(End.X, End.Y),
-            new(Start.X + (End.X - Start.X) / 4 * 3, Start.Y + (End.Y - Start.Y) / 2),
-            new(End.X, Start.Y + (End.Y - Start.Y) / 3),
-            new(Start.X + (End.X - Start.X) / 3 * 2, Start.Y + (End.Y - Start.Y) / 3)
-        };
+        int width = Math.Abs(End.X - Start.X);  // Lățimea
+        int height = Math.Abs(End.Y - Start.Y); // Înălțimea
+        int cx = (Start.X + End.X) / 2;         // Centrul pe axa X
+        int cy = (Start.Y + End.Y) / 2;         // Centrul pe axa Y
 
-        G.DrawPolygon(P, curvePoints);
+        int spikes = 5; // Numărul de vârfuri ale stelei
+        double angle = 2 * Math.PI / spikes;
+
+        Point[] points = new Point[2 * spikes];
+        for (int i = 0; i < spikes; i++)
+        {
+            // Punctele exterioare (folosesc lățimea și înălțimea separat)
+            int outerX = cx + (int)(width / 2 * Math.Cos(i * angle - Math.PI / 2));
+            int outerY = cy + (int)(height / 2 * Math.Sin(i * angle - Math.PI / 2));
+
+            // Punctele interioare (lățimea / 4 și înălțimea / 4 pentru "vârfurile interioare")
+            int innerX = cx + (int)(width / 4 * Math.Cos((i + 0.5) * angle - Math.PI / 2));
+            int innerY = cy + (int)(height / 4 * Math.Sin((i + 0.5) * angle - Math.PI / 2));
+
+            points[2 * i] = new Point(outerX, outerY);
+            points[2 * i + 1] = new Point(innerX, innerY);
+        }
+
+        G.DrawPolygon(P, points);
     }
+
 }
