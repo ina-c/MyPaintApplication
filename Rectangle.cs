@@ -11,14 +11,11 @@ internal class Rectangle : ToolControl
 
     public new void Draw()
     {
-        // Calculăm poziția de început
         var StartPosition = new Point(Math.Min(Start.X, End.X), Math.Min(Start.Y, End.Y));
         var size = new Size(Math.Abs(Start.X - End.X), Math.Abs(Start.Y - End.Y));
 
-        // Verificăm dacă Shift este apăsat
         if ((Control.ModifierKeys & Keys.Shift) == Keys.Shift)
         {
-            // Asigurăm că dimensiunea este pătrată
             int side = Math.Min(size.Width, size.Height);
             size = new Size(side, side);
         }

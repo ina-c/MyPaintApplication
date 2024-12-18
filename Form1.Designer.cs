@@ -1,4 +1,6 @@
-﻿namespace FinalPaint
+﻿using System.Drawing;
+
+namespace FinalPaint
 {
     partial class PaintApp
     {
@@ -146,6 +148,7 @@
             // 
             selectionBtn.BackColor = Color.FromArgb(224, 224, 224);
             selectionBtn.BackgroundImage = (Image)resources.GetObject("selectionBtn.BackgroundImage");
+            //selectionBtn.BackgroundImage = Properties.Resources.icons8_rectangle_dashes_30;
             selectionBtn.BackgroundImageLayout = ImageLayout.Center;
             selectionBtn.Cursor = Cursors.Hand;
             selectionBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
@@ -155,7 +158,7 @@
             selectionBtn.Location = new Point(17, 47);
             selectionBtn.Margin = new Padding(0, 5, 3, 0);
             selectionBtn.Name = "selectionBtn";
-            selectionBtn.Size = new Size(36, 32);
+            selectionBtn.Size = new Size(36, 29);
             selectionBtn.TabIndex = 15;
             selectionBtn.Tag = "Selection";
             selectionBtn.UseVisualStyleBackColor = false;
