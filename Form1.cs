@@ -260,7 +260,7 @@ public partial class PaintApp : Form
             if (Tool == Tools.Selection && isSelected && SelectionRect.Contains(e.Location))
             {
                 isDraggingSelection = true;
-                isDrawing = false; 
+                isDrawing = false;
                 selectionOffset = new Point(e.X - SelectionRect.X, e.Y - SelectionRect.Y);
                 using (var brush = new SolidBrush(backgroundColor))
                 {
@@ -326,12 +326,12 @@ public partial class PaintApp : Form
     {
         x = e.X;
         y = e.Y;
-  
+
         if (isDrawing && Tool == Tools.Selection && !isDraggingSelection)
         {
             Board.Invalidate();
         }
-        else if(isDraggingSelection)
+        else if (isDraggingSelection)
         {
             int newX = e.X - selectionOffset.X;
             int newY = e.Y - selectionOffset.Y;
@@ -347,7 +347,7 @@ public partial class PaintApp : Form
             if (Array.Exists(sampleTools, IsEqualTool))
             {
                 var size = Tool == (Tools.Pencil | Tools.Eraser) ? pencilSize : this.size;
-               
+
                 var tool = Utils.GetTool(p, Tool, size, color, py, px, g);
                 Draw(tool);
 
@@ -479,7 +479,7 @@ public partial class PaintApp : Form
 
         if (Tool == Tools.Eraser)
         {
-            p = new Pen(backgroundColor, 20*pencilSize);
+            p = new Pen(backgroundColor, 20 * pencilSize);
         }
         else
         {
@@ -816,7 +816,7 @@ public partial class PaintApp : Form
             {
                 backgroundColor = colorDialog.Color;
                 g.Clear(backgroundColor);
-                Board.Invalidate(); 
+                Board.Invalidate();
                 currentColor.BackColor = backgroundColor;
 
                 if (Tool == Tools.Eraser)
@@ -999,11 +999,11 @@ public partial class PaintApp : Form
             Board.Image = bmp;
 
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
 
         }
-     
+
     }
 
     private void changeFont_btn_Click(object sender, EventArgs e)
@@ -1021,5 +1021,15 @@ public partial class PaintApp : Form
     private void selectionBtn_Click(object sender, EventArgs e)
     {
         ChangeTool(Tools.Selection, Cursors.Cross);
+    }
+
+    private void ColorLabel_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void label1_Click(object sender, EventArgs e)
+    {
+
     }
 }
