@@ -138,12 +138,35 @@ namespace FinalPaint
             flowLayoutPanel3.Controls.Add(DroppperBtn);
             flowLayoutPanel3.Controls.Add(ToolsLabel);
             flowLayoutPanel3.Location = new Point(10, 3);
-            flowLayoutPanel3.Margin = new Padding(10, 3, 3, 3);
+            flowLayoutPanel3.Margin = new Padding(7, 3, 3, 3);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             flowLayoutPanel3.Padding = new Padding(17, 0, 0, 0);
             flowLayoutPanel3.Size = new Size(154, 125);
             flowLayoutPanel3.TabIndex = 6;
             // 
+<<<<<<< Updated upstream
+=======
+            // selectionBtn
+            // 
+            selectionBtn.BackColor = Color.FromArgb(224, 224, 224);
+            selectionBtn.BackgroundImage = Properties.Resources.icons8_rectan_30;
+            //selectionBtn.BackgroundImage = Properties.Resources.icons8_rectangle_dashes_30;
+            selectionBtn.BackgroundImageLayout = ImageLayout.Center;
+            selectionBtn.Cursor = Cursors.Hand;
+            selectionBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            selectionBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            selectionBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            selectionBtn.FlatStyle = FlatStyle.Flat;
+            selectionBtn.Location = new Point(17, 47);
+            selectionBtn.Margin = new Padding(0, 5, 3, 0);
+            selectionBtn.Name = "selectionBtn";
+            selectionBtn.Size = new Size(36, 29);
+            selectionBtn.TabIndex = 15;
+            selectionBtn.Tag = "Selection";
+            selectionBtn.UseVisualStyleBackColor = false;
+            selectionBtn.Click += selectionBtn_Click;
+            // 
+>>>>>>> Stashed changes
             // PencilBtn
             // 
             PencilBtn.BackColor = Color.FromArgb(224, 224, 224);
@@ -281,8 +304,13 @@ namespace FinalPaint
             flowLayoutPanel9.Controls.Add(changeTextBtn);
             flowLayoutPanel9.Controls.Add(TypographyLabel);
             flowLayoutPanel9.FlowDirection = FlowDirection.TopDown;
+<<<<<<< Updated upstream
             flowLayoutPanel9.Location = new Point(10, 134);
             flowLayoutPanel9.Margin = new Padding(10, 3, 3, 3);
+=======
+            flowLayoutPanel9.Location = new Point(10, 140);
+            flowLayoutPanel9.Margin = new Padding(7, 3, 3, 3);
+>>>>>>> Stashed changes
             flowLayoutPanel9.Name = "flowLayoutPanel9";
             flowLayoutPanel9.Size = new Size(154, 200);
             flowLayoutPanel9.TabIndex = 11;
@@ -382,8 +410,13 @@ namespace FinalPaint
             flowLayoutPanel4.Controls.Add(sizeInput);
             flowLayoutPanel4.Controls.Add(SizeLabel);
             flowLayoutPanel4.FlowDirection = FlowDirection.TopDown;
+<<<<<<< Updated upstream
             flowLayoutPanel4.Location = new Point(10, 340);
             flowLayoutPanel4.Margin = new Padding(10, 3, 3, 3);
+=======
+            flowLayoutPanel4.Location = new Point(10, 350);
+            flowLayoutPanel4.Margin = new Padding(7, 3, 3, 3);
+>>>>>>> Stashed changes
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             flowLayoutPanel4.Padding = new Padding(10);
             flowLayoutPanel4.Size = new Size(154, 75);
@@ -426,8 +459,14 @@ namespace FinalPaint
             flowLayoutPanel5.Controls.Add(PentagonBtn);
             flowLayoutPanel5.Controls.Add(HexagonBtn);
             flowLayoutPanel5.Controls.Add(StarBtn);
+<<<<<<< Updated upstream
             flowLayoutPanel5.Location = new Point(10, 421);
             flowLayoutPanel5.Margin = new Padding(10, 3, 3, 3);
+=======
+            flowLayoutPanel5.FlowDirection = FlowDirection.LeftToRight;
+            flowLayoutPanel5.Location = new Point(10, 470);
+            flowLayoutPanel5.Margin = new Padding(7, 3, 3, 3);
+>>>>>>> Stashed changes
             flowLayoutPanel5.Name = "flowLayoutPanel5";
             flowLayoutPanel5.Padding = new Padding(10);
             flowLayoutPanel5.Size = new Size(154, 170);
@@ -874,8 +913,13 @@ namespace FinalPaint
             // greenyellow
             // 
             greenyellow.BackColor = Color.GreenYellow;
+<<<<<<< Updated upstream
             greenyellow.Location = new Point(123, 170);
             greenyellow.Margin = new Padding(3);
+=======
+            greenyellow.Location = new Point(243, 47);
+            greenyellow.Margin = new Padding(3, 3, 3, 3);
+>>>>>>> Stashed changes
             greenyellow.Name = "greenyellow";
             greenyellow.Size = new Size(34, 34);
             greenyellow.TabIndex = 31;
@@ -951,15 +995,35 @@ namespace FinalPaint
             // customColor
             // 
             customColor.BackColor = Color.LightGray;
+<<<<<<< Updated upstream
             flowLayoutPanel6.SetFlowBreak(customColor, true);
             customColor.Location = new Point(30, 292);
             customColor.Margin = new Padding(30, 5, 10, 10);
             customColor.Name = "customColor";
+=======
+            customColor.Margin = new Padding(30, 5, 10, 10); 
+>>>>>>> Stashed changes
             customColor.Size = new Size(100, 30);
             customColor.TabIndex = 38;
             customColor.Text = "Add ...";
             customColor.UseVisualStyleBackColor = false;
             customColor.Click += customColor_Click;
+<<<<<<< Updated upstream
+=======
+            flowLayoutPanel6.SetFlowBreak(customColor, true);
+
+            // 
+            // ColorLabel
+            // 
+            ColorLabel.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point);
+            ColorLabel.Location = new Point(229, 87);
+            ColorLabel.Margin = new Padding(137, 7, 3, 0);
+            ColorLabel.Name = "ColorLabel";
+            ColorLabel.Size = new Size(78, 31);
+            ColorLabel.TabIndex = 10;
+            ColorLabel.Text = "Colors";
+            ColorLabel.TextAlign = ContentAlignment.MiddleCenter;
+>>>>>>> Stashed changes
             // 
             // label1
             // 
