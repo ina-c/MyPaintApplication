@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Windows.Forms;
 using FinalPaint.Properties;
 using Rect = System.Drawing.Rectangle;
 
@@ -10,7 +11,7 @@ public partial class PaintApp : Form
 {
     private Bitmap bmp;
     private Color color;
-    private Color backgroundColor = Color.White; // Ad?ugat
+    private Color backgroundColor = Color.White;
 
     private readonly ContextMenuStrip ContextMenu;
     private readonly ToolStripMenuItem ContextMenuFileAbout;
@@ -41,6 +42,7 @@ public partial class PaintApp : Form
     private readonly ToolStripMenuItem MenuEditUndo;
     private readonly ToolStripMenuItem MenuFile;
     private readonly ToolStripMenuItem MenuFileExit;
+    private readonly ToolStripMenuItem MenuFileNew;
     private readonly ToolStripMenuItem MenuFileOpen;
     private readonly ToolStripMenuItem MenuFileSave;
 
@@ -110,6 +112,9 @@ public partial class PaintApp : Form
 
         MenuFile = new ToolStripMenuItem("File");
 
+        MenuFileNew = new ToolStripMenuItem("New File");
+        MenuFileNew.Click += NewFileBtn_Click;
+        MenuFileNew.ShortcutKeys = Keys.Control | Keys.N;
 
         MenuFileOpen = new ToolStripMenuItem("Open image");
         MenuFileOpen.Click += UploadBtn_Click;
@@ -135,7 +140,8 @@ public partial class PaintApp : Form
 
 
         MenuFile.DropDownItems.AddRange(new ToolStripItem[]
-        {
+        {   MenuFileNew,
+            new ToolStripSeparator(),
             MenuFileOpen,
             new ToolStripSeparator(),
             MenuFileSave,
@@ -346,7 +352,7 @@ public partial class PaintApp : Form
 
             if (Array.Exists(sampleTools, IsEqualTool))
             {
-                var size = Tool == (Tools.Pencil | Tools.Eraser) ? pencilSize : this.size;
+                var size = Tool == Tools.Pencil ? pencilSize : this.size;
                
                 var tool = Utils.GetTool(p, Tool, size, color, py, px, g);
                 Draw(tool);
@@ -479,7 +485,7 @@ public partial class PaintApp : Form
 
         if (Tool == Tools.Eraser)
         {
-            p = new Pen(backgroundColor, 20*pencilSize);
+            p = new Pen(backgroundColor, 20 * pencilSize);
         }
         else
         {
@@ -670,7 +676,7 @@ public partial class PaintApp : Form
             pencilSize = (int)sizeInput.Value;
             sizeInput.Maximum = 100;
 
-            p = new Pen(backgroundColor, pencilSize); // Utilizeaz? backgroundColor pentru radier?
+            p = new Pen(backgroundColor, 20 * pencilSize);
         }
 
         else
@@ -821,7 +827,7 @@ public partial class PaintApp : Form
 
                 if (Tool == Tools.Eraser)
                 {
-                    p = new Pen(backgroundColor, pencilSize);
+                    p = new Pen(backgroundColor, 20 * pencilSize);
                 }
             }
         }
@@ -965,6 +971,46 @@ public partial class PaintApp : Form
     {
         g.FillRectangle(new SolidBrush(Color.White), SelectionRect);
         Board.Image = bmp;
+    }
+
+    private void NewFileBtn_Click(object? sender, EventArgs e)
+    {
+        if (sender is not null)
+        {
+            var msg = "Do you want to save before closing?";
+            var result = MessageBox.Show(msg, "Close Confirmation",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes) SaveBtn_Click(sender, e);
+
+            var cancelEvent = e as CancelEventArgs;
+            if (cancelEvent is not null)
+            {
+                cancelEvent.Cancel = false;
+            }
+
+            g.Clear(Color.White);
+            Board.Invalidate();
+            currentColor.BackColor = backgroundColor;
+
+            if (Tool == Tools.Eraser)
+            {
+                p = new Pen(backgroundColor, 20 * pencilSize);
+            }
+
+            var textBoxes = Board.Controls.OfType<TextBox>().ToList();
+            foreach (var tb in textBoxes)
+            {
+                Board.Controls.Remove(tb);
+                tb.Dispose();
+            }
+
+            Typography.activeTextBox = null;
+            Typography.activeTypography = null;
+
+            undoStack.Clear();
+            redoStack.Clear();
+        }
     }
 
     private void UploadBtn_Click(object? sender, EventArgs e)
