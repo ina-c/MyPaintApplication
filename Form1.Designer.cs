@@ -34,11 +34,11 @@ namespace FinalPaint
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaintApp));
             flowLayoutPanel1 = new FlowLayoutPanel();
             flowLayoutPanel3 = new FlowLayoutPanel();
+            selectionBtn = new Button();
             PencilBtn = new Button();
             FillBtn = new Button();
-            EraserBtn = new Button();
-            selectionBtn = new Button();
             TypographyBtn = new Button();
+            EraserBtn = new Button();
             DroppperBtn = new Button();
             ToolsLabel = new Label();
             flowLayoutPanel9 = new FlowLayoutPanel();
@@ -54,7 +54,6 @@ namespace FinalPaint
             sizeInput = new NumericUpDown();
             SizeLabel = new Label();
             flowLayoutPanel5 = new FlowLayoutPanel();
-            ShapeLabel = new Label();
             LineBtn = new Button();
             EllipseBtn = new Button();
             TriangleBtn = new Button();
@@ -65,6 +64,7 @@ namespace FinalPaint
             PentagonBtn = new Button();
             HexagonBtn = new Button();
             StarBtn = new Button();
+            ShapeLabel = new Label();
             flowLayoutPanel6 = new FlowLayoutPanel();
             black = new Label();
             white = new Label();
@@ -93,6 +93,7 @@ namespace FinalPaint
             aquamarine = new Label();
             midnightBlue = new Label();
             customColor = new Button();
+            ColorLabel = new Label();
             label1 = new Label();
             currentColor = new Label();
             flowLayoutPanel2 = new FlowLayoutPanel();
@@ -113,8 +114,6 @@ namespace FinalPaint
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.AutoSize = true;
-            flowLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel1.BackColor = Color.FromArgb(224, 224, 224);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel9);
@@ -124,7 +123,8 @@ namespace FinalPaint
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(168, 1041);
+            flowLayoutPanel1.AutoSize = true;
+            flowLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel3
@@ -144,8 +144,6 @@ namespace FinalPaint
             flowLayoutPanel3.Size = new Size(154, 125);
             flowLayoutPanel3.TabIndex = 6;
             // 
-<<<<<<< Updated upstream
-=======
             // selectionBtn
             // 
             selectionBtn.BackColor = Color.FromArgb(224, 224, 224);
@@ -166,7 +164,6 @@ namespace FinalPaint
             selectionBtn.UseVisualStyleBackColor = false;
             selectionBtn.Click += selectionBtn_Click;
             // 
->>>>>>> Stashed changes
             // PencilBtn
             // 
             PencilBtn.BackColor = Color.FromArgb(224, 224, 224);
@@ -205,44 +202,6 @@ namespace FinalPaint
             FillBtn.UseVisualStyleBackColor = false;
             FillBtn.Click += FillBtn_Click;
             // 
-            // EraserBtn
-            // 
-            EraserBtn.BackColor = Color.FromArgb(224, 224, 224);
-            EraserBtn.BackgroundImage = Properties.Resources.icons8_eraser_30;
-            EraserBtn.BackgroundImageLayout = ImageLayout.Center;
-            EraserBtn.Cursor = Cursors.Hand;
-            EraserBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
-            EraserBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
-            EraserBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
-            EraserBtn.FlatStyle = FlatStyle.Flat;
-            EraserBtn.Location = new Point(101, 10);
-            EraserBtn.Margin = new Padding(3, 10, 3, 3);
-            EraserBtn.Name = "EraserBtn";
-            EraserBtn.Size = new Size(36, 29);
-            EraserBtn.TabIndex = 9;
-            EraserBtn.Tag = "Eraser";
-            EraserBtn.UseVisualStyleBackColor = false;
-            EraserBtn.Click += EraserBtn_Click;
-            // 
-            // selectionBtn
-            // 
-            selectionBtn.BackColor = Color.FromArgb(224, 224, 224);
-            selectionBtn.BackgroundImage = (Image)resources.GetObject("selectionBtn.BackgroundImage");
-            selectionBtn.BackgroundImageLayout = ImageLayout.Center;
-            selectionBtn.Cursor = Cursors.Hand;
-            selectionBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
-            selectionBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
-            selectionBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
-            selectionBtn.FlatStyle = FlatStyle.Flat;
-            selectionBtn.Location = new Point(17, 47);
-            selectionBtn.Margin = new Padding(0, 5, 3, 0);
-            selectionBtn.Name = "selectionBtn";
-            selectionBtn.Size = new Size(36, 29);
-            selectionBtn.TabIndex = 15;
-            selectionBtn.Tag = "Selection";
-            selectionBtn.UseVisualStyleBackColor = false;
-            selectionBtn.Click += selectionBtn_Click;
-            // 
             // TypographyBtn
             // 
             TypographyBtn.BackColor = Color.FromArgb(224, 224, 224);
@@ -261,6 +220,25 @@ namespace FinalPaint
             TypographyBtn.Tag = "Typography";
             TypographyBtn.UseVisualStyleBackColor = false;
             TypographyBtn.Click += TypographyBtn_Click;
+            // 
+            // EraserBtn
+            // 
+            EraserBtn.BackColor = Color.FromArgb(224, 224, 224);
+            EraserBtn.BackgroundImage = Properties.Resources.icons8_eraser_30;
+            EraserBtn.BackgroundImageLayout = ImageLayout.Center;
+            EraserBtn.Cursor = Cursors.Hand;
+            EraserBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            EraserBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            EraserBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            EraserBtn.FlatStyle = FlatStyle.Flat;
+            EraserBtn.Location = new Point(101, 10);
+            EraserBtn.Margin = new Padding(3, 10, 3, 3);
+            EraserBtn.Name = "EraserBtn";
+            EraserBtn.Size = new Size(36, 29);
+            EraserBtn.TabIndex = 9;
+            EraserBtn.Tag = "Eraser";
+            EraserBtn.UseVisualStyleBackColor = false;
+            EraserBtn.Click += EraserBtn_Click;
             // 
             // DroppperBtn
             // 
@@ -292,8 +270,7 @@ namespace FinalPaint
             ToolsLabel.Text = "Tools";
             ToolsLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // flowLayoutPanel9
-            // 
+                // flowLayoutPanel9
             flowLayoutPanel9.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel9.Controls.Add(fontLabel);
             flowLayoutPanel9.Controls.Add(fontFamilyLabel);
@@ -304,87 +281,77 @@ namespace FinalPaint
             flowLayoutPanel9.Controls.Add(changeTextBtn);
             flowLayoutPanel9.Controls.Add(TypographyLabel);
             flowLayoutPanel9.FlowDirection = FlowDirection.TopDown;
-<<<<<<< Updated upstream
-            flowLayoutPanel9.Location = new Point(10, 134);
-            flowLayoutPanel9.Margin = new Padding(10, 3, 3, 3);
-=======
             flowLayoutPanel9.Location = new Point(10, 140);
             flowLayoutPanel9.Margin = new Padding(7, 3, 3, 3);
->>>>>>> Stashed changes
             flowLayoutPanel9.Name = "flowLayoutPanel9";
             flowLayoutPanel9.Size = new Size(154, 200);
-            flowLayoutPanel9.TabIndex = 11;
             flowLayoutPanel9.WrapContents = false;
-            // 
+            flowLayoutPanel9.TabIndex = 11;
+
             // fontLabel
-            // 
             fontLabel.AutoSize = true;
             fontLabel.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point);
             fontLabel.Location = new Point(3, 3);
             fontLabel.Margin = new Padding(3, 3, 3, 0);
             fontLabel.Name = "fontLabel";
-            fontLabel.Size = new Size(52, 19);
+            fontLabel.Size = new Size(50, 20);
             fontLabel.TabIndex = 10;
             fontLabel.Text = "Font :";
-            // 
+
             // fontFamilyLabel
-            // 
             fontFamilyLabel.AutoSize = true;
             fontFamilyLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            fontFamilyLabel.Location = new Point(0, 22);
-            fontFamilyLabel.Margin = new Padding(0, 0, 3, 0);
+            fontFamilyLabel.Location = new Point(3, 25);
+            fontFamilyLabel.Margin = new Padding(3, 0, 3, 0);
             fontFamilyLabel.Name = "fontFamilyLabel";
-            fontFamilyLabel.Size = new Size(57, 23);
+            fontFamilyLabel.Size = new Size(50, 20);
             fontFamilyLabel.TabIndex = 11;
             fontFamilyLabel.Text = "Segoe";
-            // 
+
             // label2
-            // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 48);
+            label2.Location = new Point(3, 50);
             label2.Margin = new Padding(3, 3, 3, 0);
             label2.Name = "label2";
-            label2.Size = new Size(57, 19);
+            label2.Size = new Size(50, 20);
             label2.TabIndex = 12;
             label2.Text = "Style :";
-            // 
+
             // fontStyleLabel
-            // 
             fontStyleLabel.AutoSize = true;
             fontStyleLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            fontStyleLabel.Location = new Point(3, 67);
+            fontStyleLabel.Location = new Point(3, 70);
+            fontStyleLabel.Margin = new Padding(3, 0, 3, 0);
             fontStyleLabel.Name = "fontStyleLabel";
-            fontStyleLabel.Size = new Size(67, 23);
+            fontStyleLabel.Size = new Size(70, 20);
             fontStyleLabel.TabIndex = 13;
             fontStyleLabel.Text = "Normal";
-            // 
+
             // label3
-            // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(3, 93);
+            label3.Location = new Point(3, 95);
             label3.Margin = new Padding(3, 3, 3, 0);
             label3.Name = "label3";
-            label3.Size = new Size(51, 19);
+            label3.Size = new Size(50, 20);
             label3.TabIndex = 14;
             label3.Text = "Size :";
-            // 
+
             // fontSizeLabel
-            // 
             fontSizeLabel.AutoSize = true;
             fontSizeLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            fontSizeLabel.Location = new Point(3, 112);
+            fontSizeLabel.Location = new Point(3, 115);
+            fontSizeLabel.Margin = new Padding(3, 0, 3, 0);
             fontSizeLabel.Name = "fontSizeLabel";
-            fontSizeLabel.Size = new Size(28, 23);
+            fontSizeLabel.Size = new Size(20, 20);
             fontSizeLabel.TabIndex = 15;
             fontSizeLabel.Text = "12";
-            // 
+
             // changeTextBtn
-            // 
             changeTextBtn.Cursor = Cursors.Hand;
             changeTextBtn.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            changeTextBtn.Location = new Point(3, 135);
+            changeTextBtn.Location = new Point(3, 140);
             changeTextBtn.Margin = new Padding(3, 0, 3, 0);
             changeTextBtn.Name = "changeTextBtn";
             changeTextBtn.Size = new Size(100, 30);
@@ -392,61 +359,52 @@ namespace FinalPaint
             changeTextBtn.Text = "Change ..";
             changeTextBtn.UseVisualStyleBackColor = true;
             changeTextBtn.Click += changeFont_btn_Click;
-            // 
+
             // TypographyLabel
-            // 
             TypographyLabel.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            TypographyLabel.Location = new Point(3, 165);
+            TypographyLabel.Location = new Point(3, 180);
+            TypographyLabel.Margin = new Padding(3, 0, 3, 0);
             TypographyLabel.Name = "TypographyLabel";
             TypographyLabel.Padding = new Padding(0, 0, 0, 10);
             TypographyLabel.Size = new Size(100, 30);
             TypographyLabel.TabIndex = 9;
             TypographyLabel.Text = "Text";
             TypographyLabel.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // flowLayoutPanel4
-            // 
             flowLayoutPanel4.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel4.Controls.Add(sizeInput);
             flowLayoutPanel4.Controls.Add(SizeLabel);
             flowLayoutPanel4.FlowDirection = FlowDirection.TopDown;
-<<<<<<< Updated upstream
-            flowLayoutPanel4.Location = new Point(10, 340);
-            flowLayoutPanel4.Margin = new Padding(10, 3, 3, 3);
-=======
             flowLayoutPanel4.Location = new Point(10, 350);
             flowLayoutPanel4.Margin = new Padding(7, 3, 3, 3);
->>>>>>> Stashed changes
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             flowLayoutPanel4.Padding = new Padding(10);
-            flowLayoutPanel4.Size = new Size(154, 75);
-            flowLayoutPanel4.TabIndex = 10;
+            flowLayoutPanel4.Size = new Size(154, 100);
             flowLayoutPanel4.WrapContents = false;
-            // 
+            flowLayoutPanel4.TabIndex = 10;
+
             // sizeInput
-            // 
             sizeInput.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            sizeInput.Location = new Point(13, 13);
+            sizeInput.Location = new Point(3, 3);
             sizeInput.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             sizeInput.Name = "sizeInput";
-            sizeInput.Size = new Size(120, 27);
+            sizeInput.Size = new Size(120, 25);
             sizeInput.TabIndex = 10;
             sizeInput.TextAlign = HorizontalAlignment.Right;
             sizeInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
             sizeInput.ValueChanged += sizeInput_ValueChanged;
-            // 
+
             // SizeLabel
-            // 
             SizeLabel.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            SizeLabel.Location = new Point(13, 43);
+            SizeLabel.Location = new Point(3, 35);
             SizeLabel.Name = "SizeLabel";
+            SizeLabel.Padding = new Padding(0);
             SizeLabel.Size = new Size(120, 30);
             SizeLabel.TabIndex = 9;
             SizeLabel.Text = "Size";
             SizeLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
+
             // flowLayoutPanel5
-            // 
             flowLayoutPanel5.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel5.Controls.Add(ShapeLabel);
             flowLayoutPanel5.Controls.Add(LineBtn);
@@ -459,32 +417,26 @@ namespace FinalPaint
             flowLayoutPanel5.Controls.Add(PentagonBtn);
             flowLayoutPanel5.Controls.Add(HexagonBtn);
             flowLayoutPanel5.Controls.Add(StarBtn);
-<<<<<<< Updated upstream
-            flowLayoutPanel5.Location = new Point(10, 421);
-            flowLayoutPanel5.Margin = new Padding(10, 3, 3, 3);
-=======
             flowLayoutPanel5.FlowDirection = FlowDirection.LeftToRight;
             flowLayoutPanel5.Location = new Point(10, 470);
             flowLayoutPanel5.Margin = new Padding(7, 3, 3, 3);
->>>>>>> Stashed changes
             flowLayoutPanel5.Name = "flowLayoutPanel5";
             flowLayoutPanel5.Padding = new Padding(10);
             flowLayoutPanel5.Size = new Size(154, 170);
+            flowLayoutPanel5.WrapContents = true;
             flowLayoutPanel5.TabIndex = 8;
-            // 
+
             // ShapeLabel
-            // 
             ShapeLabel.AutoSize = true;
             ShapeLabel.Font = new Font("Century Gothic", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            ShapeLabel.Location = new Point(13, 13);
+            ShapeLabel.Location = new Point(3, 393);
             ShapeLabel.Margin = new Padding(3);
             ShapeLabel.Name = "ShapeLabel";
-            ShapeLabel.Size = new Size(69, 19);
+            ShapeLabel.Size = new Size(70, 20);
             ShapeLabel.TabIndex = 12;
             ShapeLabel.Text = "Shapes";
-            // 
+
             // LineBtn
-            // 
             LineBtn.BackColor = Color.FromArgb(224, 224, 224);
             LineBtn.BackgroundImage = Properties.Resources.icons8_line_30;
             LineBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -493,16 +445,16 @@ namespace FinalPaint
             LineBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             LineBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             LineBtn.FlatStyle = FlatStyle.Flat;
-            LineBtn.Location = new Point(88, 13);
+            LineBtn.Location = new Point(3, 3);
+            LineBtn.Size = new Size(32, 32); 
+            LineBtn.Margin = new Padding(3, 3, 3, 3); // Margine uniformă
             LineBtn.Name = "LineBtn";
-            LineBtn.Size = new Size(32, 32);
             LineBtn.TabIndex = 13;
             LineBtn.Tag = "Line";
             LineBtn.UseVisualStyleBackColor = false;
             LineBtn.Click += LineBtn_Click;
-            // 
+
             // EllipseBtn
-            // 
             EllipseBtn.BackColor = Color.FromArgb(224, 224, 224);
             EllipseBtn.BackgroundImage = Properties.Resources.icons8_circle_30;
             EllipseBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -511,16 +463,16 @@ namespace FinalPaint
             EllipseBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             EllipseBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             EllipseBtn.FlatStyle = FlatStyle.Flat;
-            EllipseBtn.Location = new Point(13, 51);
+            EllipseBtn.Location = new Point(3, 42);
+            EllipseBtn.Margin = new Padding(3, 3, 3, 3);
             EllipseBtn.Name = "EllipseBtn";
             EllipseBtn.Size = new Size(32, 32);
             EllipseBtn.TabIndex = 15;
             EllipseBtn.Tag = "Ellipse";
             EllipseBtn.UseVisualStyleBackColor = false;
             EllipseBtn.Click += EllipseBtn_Click;
-            // 
+
             // TriangleBtn
-            // 
             TriangleBtn.BackColor = Color.FromArgb(224, 224, 224);
             TriangleBtn.BackgroundImage = (Image)resources.GetObject("TriangleBtn.BackgroundImage");
             TriangleBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -529,16 +481,16 @@ namespace FinalPaint
             TriangleBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             TriangleBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             TriangleBtn.FlatStyle = FlatStyle.Flat;
-            TriangleBtn.Location = new Point(51, 51);
+            TriangleBtn.Location = new Point(3, 81);
+            TriangleBtn.Margin = new Padding(3, 3, 3, 3);
             TriangleBtn.Name = "TriangleBtn";
             TriangleBtn.Size = new Size(32, 32);
             TriangleBtn.TabIndex = 17;
             TriangleBtn.Tag = "Triangle";
             TriangleBtn.UseVisualStyleBackColor = false;
             TriangleBtn.Click += Triangle_Click;
-            // 
+
             // RightTriangleBtn
-            // 
             RightTriangleBtn.BackColor = Color.FromArgb(224, 224, 224);
             RightTriangleBtn.BackgroundImage = (Image)resources.GetObject("RightTriangleBtn.BackgroundImage");
             RightTriangleBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -547,16 +499,16 @@ namespace FinalPaint
             RightTriangleBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             RightTriangleBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             RightTriangleBtn.FlatStyle = FlatStyle.Flat;
-            RightTriangleBtn.Location = new Point(89, 51);
+            RightTriangleBtn.Location = new Point(3, 120);
+            RightTriangleBtn.Margin = new Padding(3, 3, 3, 3);
             RightTriangleBtn.Name = "RightTriangleBtn";
             RightTriangleBtn.Size = new Size(32, 32);
             RightTriangleBtn.TabIndex = 16;
             RightTriangleBtn.Tag = "RightTriangle";
             RightTriangleBtn.UseVisualStyleBackColor = false;
             RightTriangleBtn.Click += RightTriangleBtn_Click;
-            // 
+
             // RectangleBtn
-            // 
             RectangleBtn.BackColor = Color.FromArgb(224, 224, 224);
             RectangleBtn.BackgroundImage = (Image)resources.GetObject("RectangleBtn.BackgroundImage");
             RectangleBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -565,16 +517,16 @@ namespace FinalPaint
             RectangleBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             RectangleBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             RectangleBtn.FlatStyle = FlatStyle.Flat;
-            RectangleBtn.Location = new Point(13, 89);
+            RectangleBtn.Location = new Point(3, 159);
+            RectangleBtn.Margin = new Padding(3, 3, 3, 3);
             RectangleBtn.Name = "RectangleBtn";
             RectangleBtn.Size = new Size(32, 32);
             RectangleBtn.TabIndex = 14;
             RectangleBtn.Tag = "Rectangle";
             RectangleBtn.UseVisualStyleBackColor = false;
             RectangleBtn.Click += RectangleBtn_Click;
-            // 
+
             // RombBtn
-            // 
             RombBtn.BackColor = Color.FromArgb(224, 224, 224);
             RombBtn.BackgroundImage = (Image)resources.GetObject("RombBtn.BackgroundImage");
             RombBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -583,16 +535,16 @@ namespace FinalPaint
             RombBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             RombBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             RombBtn.FlatStyle = FlatStyle.Flat;
-            RombBtn.Location = new Point(51, 89);
+            RombBtn.Location = new Point(3, 198);
+            RombBtn.Margin = new Padding(3, 3, 3, 3);
             RombBtn.Name = "RombBtn";
             RombBtn.Size = new Size(32, 32);
             RombBtn.TabIndex = 21;
             RombBtn.Tag = "Romb";
             RombBtn.UseVisualStyleBackColor = false;
             RombBtn.Click += RombBtn_Click;
-            // 
+
             // TrapezBtn
-            // 
             TrapezBtn.BackColor = Color.FromArgb(224, 224, 224);
             TrapezBtn.BackgroundImage = (Image)resources.GetObject("TrapezBtn.BackgroundImage");
             TrapezBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -601,16 +553,15 @@ namespace FinalPaint
             TrapezBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             TrapezBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             TrapezBtn.FlatStyle = FlatStyle.Flat;
-            TrapezBtn.Location = new Point(89, 89);
+            TrapezBtn.Location = new Point(3, 237);
+            TrapezBtn.Margin = new Padding(3, 3, 3, 3);
             TrapezBtn.Name = "TrapezBtn";
             TrapezBtn.Size = new Size(32, 32);
             TrapezBtn.TabIndex = 22;
             TrapezBtn.Tag = "Trapez";
             TrapezBtn.UseVisualStyleBackColor = false;
             TrapezBtn.Click += HeartBtn_Click;
-            // 
             // PentagonBtn
-            // 
             PentagonBtn.BackColor = Color.FromArgb(224, 224, 224);
             PentagonBtn.BackgroundImage = (Image)resources.GetObject("PentagonBtn.BackgroundImage");
             PentagonBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -619,16 +570,16 @@ namespace FinalPaint
             PentagonBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             PentagonBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             PentagonBtn.FlatStyle = FlatStyle.Flat;
-            PentagonBtn.Location = new Point(13, 127);
+            PentagonBtn.Location = new Point(3, 276);
+            PentagonBtn.Margin = new Padding(3, 3, 3, 3);
             PentagonBtn.Name = "PentagonBtn";
             PentagonBtn.Size = new Size(32, 32);
             PentagonBtn.TabIndex = 18;
             PentagonBtn.Tag = "Pentagon";
             PentagonBtn.UseVisualStyleBackColor = false;
             PentagonBtn.Click += PentagonBtn_Click;
-            // 
+
             // HexagonBtn
-            // 
             HexagonBtn.BackColor = Color.FromArgb(224, 224, 224);
             HexagonBtn.BackgroundImage = (Image)resources.GetObject("HexagonBtn.BackgroundImage");
             HexagonBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -637,16 +588,16 @@ namespace FinalPaint
             HexagonBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             HexagonBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             HexagonBtn.FlatStyle = FlatStyle.Flat;
-            HexagonBtn.Location = new Point(51, 127);
+            HexagonBtn.Location = new Point(3, 315);
+            HexagonBtn.Margin = new Padding(3, 3, 3, 3);
             HexagonBtn.Name = "HexagonBtn";
             HexagonBtn.Size = new Size(32, 32);
             HexagonBtn.TabIndex = 19;
             HexagonBtn.Tag = "Hexagon";
             HexagonBtn.UseVisualStyleBackColor = false;
             HexagonBtn.Click += HexagonBtn_Click;
-            // 
+
             // StarBtn
-            // 
             StarBtn.BackColor = Color.FromArgb(224, 224, 224);
             StarBtn.BackgroundImage = (Image)resources.GetObject("StarBtn.BackgroundImage");
             StarBtn.BackgroundImageLayout = ImageLayout.Center;
@@ -655,14 +606,17 @@ namespace FinalPaint
             StarBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             StarBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             StarBtn.FlatStyle = FlatStyle.Flat;
-            StarBtn.Location = new Point(89, 127);
+            StarBtn.Location = new Point(3, 354);
+            StarBtn.Margin = new Padding(3, 3, 3, 3);
             StarBtn.Name = "StarBtn";
             StarBtn.Size = new Size(32, 32);
             StarBtn.TabIndex = 20;
             StarBtn.Tag = "Star";
             StarBtn.UseVisualStyleBackColor = false;
             StarBtn.Click += StarBtn_Click;
-            // 
+
+            
+
             // flowLayoutPanel6
             // 
             flowLayoutPanel6.BorderStyle = BorderStyle.FixedSingle;
@@ -693,22 +647,25 @@ namespace FinalPaint
             flowLayoutPanel6.Controls.Add(aquamarine);
             flowLayoutPanel6.Controls.Add(midnightBlue);
             flowLayoutPanel6.Controls.Add(customColor);
+            flowLayoutPanel6.Controls.Add(ColorLabel);
             flowLayoutPanel6.Controls.Add(label1);
             flowLayoutPanel6.Controls.Add(currentColor);
             flowLayoutPanel6.Cursor = Cursors.Hand;
-            flowLayoutPanel6.Location = new Point(3, 597);
+            flowLayoutPanel6.Location = new Point(972, 3);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             flowLayoutPanel6.Padding = new Padding(0, 7, 0, 0);
-            flowLayoutPanel6.Size = new Size(162, 376);
+            flowLayoutPanel6.Size = new Size(162, 325); 
             flowLayoutPanel6.TabIndex = 9;
+            flowLayoutPanel6.FlowDirection = FlowDirection.LeftToRight;
+            flowLayoutPanel6.WrapContents = true;
             // 
             // black
             // 
             black.BackColor = Color.Black;
-            black.Location = new Point(3, 10);
-            black.Margin = new Padding(3);
+            black.Location = new Point(3, 7);
             black.Name = "black";
             black.Size = new Size(34, 34);
+            black.Margin = new Padding(3);
             black.TabIndex = 37;
             black.Tag = "black";
             black.Click += color_Click;
@@ -716,10 +673,10 @@ namespace FinalPaint
             // white
             // 
             white.BackColor = Color.White;
-            white.Location = new Point(43, 10);
-            white.Margin = new Padding(3);
+            white.Location = new Point(43, 7);
             white.Name = "white";
             white.Size = new Size(34, 34);
+            white.Margin = new Padding(3);
             white.TabIndex = 12;
             white.Tag = "white";
             white.Click += color_Click;
@@ -727,10 +684,10 @@ namespace FinalPaint
             // red
             // 
             red.BackColor = Color.Red;
-            red.Location = new Point(83, 10);
-            red.Margin = new Padding(3);
+            red.Location = new Point(83, 7);
             red.Name = "red";
             red.Size = new Size(34, 34);
+            red.Margin = new Padding(3);
             red.TabIndex = 13;
             red.Tag = "red";
             red.Click += color_Click;
@@ -738,10 +695,10 @@ namespace FinalPaint
             // orange
             // 
             orange.BackColor = Color.Orange;
-            orange.Location = new Point(123, 10);
-            orange.Margin = new Padding(3);
+            orange.Location = new Point(123, 7);
             orange.Name = "orange";
             orange.Size = new Size(34, 34);
+            orange.Margin = new Padding(3);
             orange.TabIndex = 14;
             orange.Tag = "orange";
             orange.Click += color_Click;
@@ -749,9 +706,10 @@ namespace FinalPaint
             // yellow
             // 
             yellow.BackColor = Color.Yellow;
-            yellow.Location = new Point(3, 47);
+            yellow.Location = new Point(163, 7);
             yellow.Name = "yellow";
             yellow.Size = new Size(34, 34);
+            orange.Margin = new Padding(3);
             yellow.TabIndex = 15;
             yellow.Tag = "yellow";
             yellow.Click += color_Click;
@@ -759,10 +717,10 @@ namespace FinalPaint
             // green
             // 
             green.BackColor = Color.Green;
-            green.Location = new Point(43, 50);
-            green.Margin = new Padding(3);
+            green.Location = new Point(203, 7);
             green.Name = "green";
             green.Size = new Size(34, 34);
+            green.Margin = new Padding(3);
             green.TabIndex = 16;
             green.Tag = "green";
             green.Click += color_Click;
@@ -770,10 +728,10 @@ namespace FinalPaint
             // blue
             // 
             blue.BackColor = Color.Aqua;
-            blue.Location = new Point(83, 50);
-            blue.Margin = new Padding(3);
+            blue.Location = new Point(243, 7);
             blue.Name = "blue";
             blue.Size = new Size(34, 34);
+            blue.Margin = new Padding(3);
             blue.TabIndex = 17;
             blue.Tag = "blue";
             blue.Click += color_Click;
@@ -781,10 +739,10 @@ namespace FinalPaint
             // violet
             // 
             violet.BackColor = Color.Violet;
-            violet.Location = new Point(123, 50);
-            violet.Margin = new Padding(3);
+            violet.Location = new Point(283, 7);
             violet.Name = "violet";
             violet.Size = new Size(34, 34);
+            violet.Margin = new Padding(3);
             violet.TabIndex = 18;
             violet.Tag = "violet";
             violet.Click += color_Click;
@@ -792,10 +750,10 @@ namespace FinalPaint
             // pink
             // 
             pink.BackColor = Color.Pink;
-            pink.Location = new Point(3, 90);
-            pink.Margin = new Padding(3);
+            pink.Location = new Point(323, 7);
             pink.Name = "pink";
             pink.Size = new Size(34, 34);
+            pink.Margin = new Padding(3);
             pink.TabIndex = 19;
             pink.Tag = "pink";
             pink.Click += color_Click;
@@ -803,10 +761,10 @@ namespace FinalPaint
             // brown
             // 
             brown.BackColor = Color.Brown;
-            brown.Location = new Point(43, 90);
-            brown.Margin = new Padding(3);
+            brown.Location = new Point(363, 7);
             brown.Name = "brown";
             brown.Size = new Size(34, 34);
+            brown.Margin = new Padding(3);
             brown.TabIndex = 20;
             brown.Tag = "brown";
             brown.Click += color_Click;
@@ -814,10 +772,10 @@ namespace FinalPaint
             // peru
             // 
             peru.BackColor = Color.Peru;
-            peru.Location = new Point(83, 90);
-            peru.Margin = new Padding(3);
+            peru.Location = new Point(403, 7);
             peru.Name = "peru";
             peru.Size = new Size(34, 34);
+            peru.Margin = new Padding(3);
             peru.TabIndex = 21;
             peru.Tag = "peru";
             peru.Click += color_Click;
@@ -825,10 +783,10 @@ namespace FinalPaint
             // bisque
             // 
             bisque.BackColor = Color.Bisque;
-            bisque.Location = new Point(123, 90);
-            bisque.Margin = new Padding(3);
+            bisque.Location = new Point(443, 7);
             bisque.Name = "bisque";
             bisque.Size = new Size(34, 34);
+            bisque.Margin = new Padding(3);
             bisque.TabIndex = 23;
             bisque.Tag = "bisque";
             bisque.Click += color_Click;
@@ -836,10 +794,10 @@ namespace FinalPaint
             // maroon
             // 
             maroon.BackColor = Color.Maroon;
-            maroon.Location = new Point(3, 130);
-            maroon.Margin = new Padding(3);
+            maroon.Location = new Point(483, 7);
             maroon.Name = "maroon";
             maroon.Size = new Size(34, 34);
+            maroon.Margin = new Padding(3);
             maroon.TabIndex = 24;
             maroon.Tag = "maroon";
             maroon.Click += color_Click;
@@ -847,10 +805,11 @@ namespace FinalPaint
             // coral
             // 
             coral.BackColor = Color.Coral;
-            coral.Location = new Point(43, 130);
-            coral.Margin = new Padding(3);
+            coral.Location = new Point(3, 47);
+            coral.Margin = new Padding(3, 7, 3, 0);
             coral.Name = "coral";
             coral.Size = new Size(34, 34);
+            coral.Margin = new Padding(3);
             coral.TabIndex = 25;
             coral.Tag = "coral";
             coral.Click += color_Click;
@@ -858,10 +817,11 @@ namespace FinalPaint
             // olive
             // 
             olive.BackColor = Color.Olive;
-            olive.Location = new Point(83, 130);
-            olive.Margin = new Padding(3);
+            olive.Location = new Point(43, 47);
+            olive.Margin = new Padding(3, 7, 3, 0);
             olive.Name = "olive";
             olive.Size = new Size(34, 34);
+            olive.Margin = new Padding(3);
             olive.TabIndex = 26;
             olive.Tag = "olive";
             olive.Click += color_Click;
@@ -869,10 +829,11 @@ namespace FinalPaint
             // gold
             // 
             gold.BackColor = Color.Gold;
-            gold.Location = new Point(123, 130);
-            gold.Margin = new Padding(3);
+            gold.Location = new Point(83, 47);
+            gold.Margin = new Padding(3, 7, 3, 0);
             gold.Name = "gold";
             gold.Size = new Size(34, 34);
+            gold.Margin = new Padding(3);
             gold.TabIndex = 27;
             gold.Tag = "gold";
             gold.Click += color_Click;
@@ -880,10 +841,11 @@ namespace FinalPaint
             // palegreen
             // 
             palegreen.BackColor = Color.PaleGreen;
-            palegreen.Location = new Point(3, 170);
-            palegreen.Margin = new Padding(3);
+            palegreen.Location = new Point(123, 47);
+            palegreen.Margin = new Padding(3, 7, 3, 0);
             palegreen.Name = "palegreen";
             palegreen.Size = new Size(34, 34);
+            palegreen.Margin = new Padding(3);
             palegreen.TabIndex = 28;
             palegreen.Tag = "palegreen";
             palegreen.Click += color_Click;
@@ -891,10 +853,11 @@ namespace FinalPaint
             // highlight
             // 
             highlight.BackColor = SystemColors.Highlight;
-            highlight.Location = new Point(43, 170);
-            highlight.Margin = new Padding(3);
+            highlight.Location = new Point(163, 47);
+            highlight.Margin = new Padding(3, 7, 3, 0);
             highlight.Name = "highlight";
             highlight.Size = new Size(34, 34);
+            highlight.Margin = new Padding(3);
             highlight.TabIndex = 29;
             highlight.Tag = "highlight";
             highlight.Click += color_Click;
@@ -902,10 +865,11 @@ namespace FinalPaint
             // hotpink
             // 
             hotpink.BackColor = Color.HotPink;
-            hotpink.Location = new Point(83, 170);
-            hotpink.Margin = new Padding(3);
+            hotpink.Location = new Point(203, 47);
+            hotpink.Margin = new Padding(3, 7, 3, 0);
             hotpink.Name = "hotpink";
             hotpink.Size = new Size(34, 34);
+            hotpink.Margin = new Padding(3);
             hotpink.TabIndex = 30;
             hotpink.Tag = "hotpink";
             hotpink.Click += color_Click;
@@ -913,15 +877,11 @@ namespace FinalPaint
             // greenyellow
             // 
             greenyellow.BackColor = Color.GreenYellow;
-<<<<<<< Updated upstream
-            greenyellow.Location = new Point(123, 170);
-            greenyellow.Margin = new Padding(3);
-=======
             greenyellow.Location = new Point(243, 47);
             greenyellow.Margin = new Padding(3, 3, 3, 3);
->>>>>>> Stashed changes
             greenyellow.Name = "greenyellow";
             greenyellow.Size = new Size(34, 34);
+            greenyellow.Margin = new Padding(3);
             greenyellow.TabIndex = 31;
             greenyellow.Tag = "greenyellow";
             greenyellow.Click += color_Click;
@@ -929,10 +889,11 @@ namespace FinalPaint
             // fuchsia
             // 
             fuchsia.BackColor = Color.Fuchsia;
-            fuchsia.Location = new Point(3, 210);
-            fuchsia.Margin = new Padding(3);
+            fuchsia.Location = new Point(283, 47);
+            fuchsia.Margin = new Padding(3, 7, 3, 0);
             fuchsia.Name = "fuchsia";
             fuchsia.Size = new Size(34, 34);
+            fuchsia.Margin = new Padding(3);
             fuchsia.TabIndex = 32;
             fuchsia.Tag = "fuchsia";
             fuchsia.Click += color_Click;
@@ -940,10 +901,11 @@ namespace FinalPaint
             // turquoise
             // 
             turquoise.BackColor = Color.Turquoise;
-            turquoise.Location = new Point(43, 210);
-            turquoise.Margin = new Padding(3);
+            turquoise.Location = new Point(323, 47);
+            turquoise.Margin = new Padding(3, 7, 3, 0);
             turquoise.Name = "turquoise";
             turquoise.Size = new Size(34, 34);
+            turquoise.Margin = new Padding(3);
             turquoise.TabIndex = 36;
             turquoise.Tag = "turquoise";
             turquoise.Click += color_Click;
@@ -951,10 +913,11 @@ namespace FinalPaint
             // lightcoral
             // 
             lightcoral.BackColor = Color.LightCoral;
-            lightcoral.Location = new Point(83, 210);
-            lightcoral.Margin = new Padding(3);
+            lightcoral.Location = new Point(363, 47);
+            lightcoral.Margin = new Padding(3, 7, 3, 0);
             lightcoral.Name = "lightcoral";
             lightcoral.Size = new Size(34, 34);
+            lightcoral.Margin = new Padding(3);
             lightcoral.TabIndex = 34;
             lightcoral.Tag = "lightcoral";
             lightcoral.Click += color_Click;
@@ -962,10 +925,11 @@ namespace FinalPaint
             // indigo
             // 
             indigo.BackColor = Color.Indigo;
-            indigo.Location = new Point(123, 210);
-            indigo.Margin = new Padding(3);
+            indigo.Location = new Point(403, 47);
+            indigo.Margin = new Padding(3, 7, 3, 0);
             indigo.Name = "indigo";
             indigo.Size = new Size(34, 34);
+            indigo.Margin = new Padding(3);
             indigo.TabIndex = 33;
             indigo.Tag = "indigo";
             indigo.Click += color_Click;
@@ -973,10 +937,11 @@ namespace FinalPaint
             // aquamarine
             // 
             aquamarine.BackColor = Color.Aquamarine;
-            aquamarine.Location = new Point(3, 250);
-            aquamarine.Margin = new Padding(3);
+            aquamarine.Location = new Point(443, 47);
+            aquamarine.Margin = new Padding(3, 7, 3, 0);
             aquamarine.Name = "aquamarine";
             aquamarine.Size = new Size(34, 34);
+            aquamarine.Margin = new Padding(3);
             aquamarine.TabIndex = 35;
             aquamarine.Tag = "aquamarine";
             aquamarine.Click += color_Click;
@@ -984,32 +949,23 @@ namespace FinalPaint
             // midnightBlue
             // 
             midnightBlue.BackColor = Color.MidnightBlue;
-            midnightBlue.Location = new Point(43, 250);
-            midnightBlue.Margin = new Padding(3);
+            midnightBlue.Location = new Point(483, 47);
+            midnightBlue.Margin = new Padding(3, 7, 3, 0);
             midnightBlue.Name = "midnightBlue";
             midnightBlue.Size = new Size(34, 34);
+            midnightBlue.Margin = new Padding(3);
             midnightBlue.TabIndex = 11;
             midnightBlue.Tag = "midnightBlue";
             midnightBlue.Click += color_Click;
             // 
+            //
             // customColor
-            // 
-            customColor.BackColor = Color.LightGray;
-<<<<<<< Updated upstream
-            flowLayoutPanel6.SetFlowBreak(customColor, true);
-            customColor.Location = new Point(30, 292);
-            customColor.Margin = new Padding(30, 5, 10, 10);
-            customColor.Name = "customColor";
-=======
-            customColor.Margin = new Padding(30, 5, 10, 10); 
->>>>>>> Stashed changes
-            customColor.Size = new Size(100, 30);
-            customColor.TabIndex = 38;
+            //
             customColor.Text = "Add ...";
-            customColor.UseVisualStyleBackColor = false;
+            customColor.BackColor = Color.LightGray;
+            customColor.Margin = new Padding(30, 5, 10, 10); 
+            customColor.Size = new Size(100, 30);
             customColor.Click += customColor_Click;
-<<<<<<< Updated upstream
-=======
             flowLayoutPanel6.SetFlowBreak(customColor, true);
 
             // 
@@ -1023,26 +979,24 @@ namespace FinalPaint
             ColorLabel.TabIndex = 10;
             ColorLabel.Text = "Colors";
             ColorLabel.TextAlign = ContentAlignment.MiddleCenter;
->>>>>>> Stashed changes
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(10, 337);
-            label1.Margin = new Padding(10, 5, 3, 0);
+            label1.Location = new Point(385, 88);
+            label1.Margin = new Padding(75, 8, 3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(77, 19);
+            label1.Size = new Size(93, 23);
             label1.TabIndex = 38;
             label1.Text = "Current :";
-            label1.Click += label1_Click;
             // 
             // currentColor
             // 
             currentColor.BackColor = Color.Black;
-            currentColor.Location = new Point(92, 332);
-            currentColor.Margin = new Padding(2, 0, 3, 0);
+            currentColor.Location = new Point(483, 85);
+            currentColor.Margin = new Padding(2, 5, 3, 0);
             currentColor.Name = "currentColor";
             currentColor.Size = new Size(33, 33);
             currentColor.TabIndex = 39;
@@ -1054,9 +1008,9 @@ namespace FinalPaint
             flowLayoutPanel2.Controls.Add(ShortcutsBtn);
             flowLayoutPanel2.Controls.Add(locationLabel);
             flowLayoutPanel2.Dock = DockStyle.Bottom;
-            flowLayoutPanel2.Location = new Point(168, 971);
+            flowLayoutPanel2.Location = new Point(0, 971);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(1368, 70);
+            flowLayoutPanel2.Size = new Size(1536, 70);
             flowLayoutPanel2.TabIndex = 1;
             // 
             // ShortcutsBtn
@@ -1132,7 +1086,6 @@ namespace FinalPaint
             flowLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)Board).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -1178,6 +1131,7 @@ namespace FinalPaint
         private Label turquoise;
         private Label black;
         private Button customColor;
+        private Label ColorLabel;
         private FlowLayoutPanel flowLayoutPanel4;
         private NumericUpDown sizeInput;
         private Label SizeLabel;
