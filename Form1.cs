@@ -352,7 +352,7 @@ public partial class PaintApp : Form
 
             if (Array.Exists(sampleTools, IsEqualTool))
             {
-                var size = Tool == Tools.Pencil ? pencilSize : this.size;
+                var size = Tool == (Tools.Pencil | Tools.Eraser) ? pencilSize : this.size;
                
                 var tool = Utils.GetTool(p, Tool, size, color, py, px, g);
                 Draw(tool);
@@ -485,7 +485,7 @@ public partial class PaintApp : Form
 
         if (Tool == Tools.Eraser)
         {
-            p = new Pen(backgroundColor, 20 * pencilSize);
+            p = new Pen(backgroundColor, 50 * pencilSize);
         }
         else
         {
@@ -676,7 +676,7 @@ public partial class PaintApp : Form
             pencilSize = (int)sizeInput.Value;
             sizeInput.Maximum = 100;
 
-            p = new Pen(backgroundColor, 20 * pencilSize);
+            p = new Pen(backgroundColor, 50 * pencilSize);
         }
 
         else
@@ -827,7 +827,7 @@ public partial class PaintApp : Form
 
                 if (Tool == Tools.Eraser)
                 {
-                    p = new Pen(backgroundColor, 20 * pencilSize);
+                    p = new Pen(backgroundColor, 50 * pencilSize);
                 }
             }
         }
@@ -995,7 +995,7 @@ public partial class PaintApp : Form
 
             if (Tool == Tools.Eraser)
             {
-                p = new Pen(backgroundColor, 20 * pencilSize);
+                p = new Pen(backgroundColor, 50 * pencilSize);
             }
 
             var textBoxes = Board.Controls.OfType<TextBox>().ToList();
